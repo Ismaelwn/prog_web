@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="css/cl.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/cl.js"></script>
+    
+</head>
+
+<body>
+    <div id="form_connection" style="display: block;">
+            <h2 id="h2_l">Connexion</h2>
+            <form id="loginform">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" class="username" id="usernamel" name="username" required>
+                <br>
+                <label for="password">Mot de passe</label>
+                <input type="password" class="password" id="passwordl" name="password" required>
+                <br>
+                <button type="submit">Se connecter</button>
+                <a href="#">Mot de passe oublié ?</a>  
+                <button id="createl" >Créer un compte</button>
+            </form>
+        </div>
+
+        <div id="form_creer" style="display: none;">
+            <h2 id="h2_c">Créer un compte</h2>
+            <form id="signinform">
+                <label for="Nom">Nom</label>
+                <input type="text" id="Nom" name="Nom" required>
+                <br>
+                <label for="Prenom">Prenom</label>
+                <input type="text" id="Prenom" name="Prenom" required>
+                <br>
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" class="username" id="usernamec" name="username" required>
+                <br>
+                <label for="password">Mot de passe</label>
+                <input type="password"  class="password" id="password1" name="password" required>
+                <br>
+                <label for="password">Confirmer votre Mot de passe</label>
+                <input type="password" class="password" id="password2" name="password" required>
+                <br>
+                <button type="submit">creer le compte</button>
+                <button id="createc" >Vous avez déja un compte ?</button>
+            </form>
+    </div>
+
+    
+        
+    <footer>
+        <p>&copy; 2025 Mon Site Web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
