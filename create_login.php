@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Re7-log in/sign in</title>
     <link rel="stylesheet" href="css/cl.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/cl.js"></script>
+    <script>
+        function getForm(prenom, nom, mail, mdp, username){
+          $.ajax({
+            method: "GET",
+            url: "service.php",
+            data: {"prenom": prenom, "nom":nom, "mail": mail,"mdp": mdp, "username":username }
+          }).done(function(e) {
+            console.log("erreur")
+          }).fail(function(e) {
+            console.log(e);
+            $("#message").html("<span class='ko'> Error: network problem </span>");
+          });
     
-</head>
+          
+        }
+    </script>
+    
+    </head>
 
 <body>
     <div id="form_connection" style="display: block;">
@@ -32,11 +48,14 @@
                 <label for="Nom">Nom</label>
                 <input type="text" id="Nom" name="Nom" required>
                 <br>
-                <label for="Prenom">Prenom</label>
+                <label for="Prenom">Prénom</label>
                 <input type="text" id="Prenom" name="Prenom" required>
                 <br>
                 <label for="username">Nom d'utilisateur</label>
                 <input type="text" class="username" id="usernamec" name="username" required>
+                <br>
+                <label for="mail">Adresse mail</label>
+                <input type="text" class="mail" id="mailc" name="mail" required>
                 <br>
                 <label for="password">Mot de passe</label>
                 <input type="password"  class="password" id="password1" name="password" required>
@@ -44,7 +63,7 @@
                 <label for="password">Confirmer votre Mot de passe</label>
                 <input type="password" class="password" id="password2" name="password" required>
                 <br>
-                <button type="submit">creer le compte</button>
+                <button id="buttoncreer" type="submit">Créer le compte</button>
                 <button id="createc" >Vous avez déja un compte ?</button>
             </form>
     </div>
