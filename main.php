@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>re7</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header>
-        <h1>Bienvenue sur Re7</h1>
         <nav>
             <ul>
                 <li><a href="#">re7</a></li>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Rechercher</a></li>
                 <li><a href="#">À propos</a></li>
-                <li><a href="#">Contact</a></li>
                 <li><a href="#">Contact</a></li>  
-                <li><a href="#">Se connecter</a></li> <!-- faire switcher entre se connecter/connecté en tant que -->
+                <li><a href="#">favoris</a></li>  
+                <li><a href="create_login.php">Se connecter</a></li> <!-- faire switcher entre se connecter/connecté en tant que -->
             </ul>
         </nav>
     </header>
     <main>
+        <h1>Bienvenue sur Re7</h1>
         <section>
             <h2>Introduction</h2>
             <p>Ceci est une page de base pour démarrer ton site web.</p>
@@ -31,3 +31,8 @@
     </footer>
 </body>
 </html>
+
+
+<?php 
+
+?>

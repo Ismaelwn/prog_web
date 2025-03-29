@@ -8,22 +8,51 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/cl.js"></script>
     <script>
-        function getForm(prenom, nom, mail, mdp, username){
+      /*
+        function getname(username){
           $.ajax({
-            method: "GET",
-            url: "service.php",
-            data: {"prenom": prenom, "nom":nom, "mail": mail,"mdp": mdp, "username":username }
-          }).done(function(e) {
-            console.log("erreur")
-          }).fail(function(e) {
-            console.log(e);
-            $("#message").html("<span class='ko'> Error: network problem </span>");
-          });
-    
-          
+        method: "GET",
+        url: "service.php",
+        data: {
+            "usernamec": username,
         }
-    </script>
+    }).done(function(e) {
+        console.log(e)
+    }).fail(function(e) {
+        console.log(e);
+    });
+    }*/
     
+    function getPrenom(Prenom){
+        $.ajax({
+      method: "GET",
+      url: "service.php",
+      data: {
+          "prenomc": Prenom
+      }
+}).done(function(e) {
+  console.log(e)
+  
+}).fail(function(e) {
+  console.log(e);
+});
+}
+   /*     
+function getNom(Nom){
+    $.ajax({
+  method: "GET",
+  url: "service.php",
+  data: {
+      "nomc": Nom
+  }
+}).done(function(e) {
+  console.log(e)
+}).fail(function(e) {
+  console.log(e);
+})
+}
+*/
+    </script>
     </head>
 
 <body>
@@ -31,7 +60,7 @@
             <h2 id="h2_l">Connexion</h2>
             <form id="loginform">
                 <label for="username">Nom d'utilisateur</label>
-                <input type="text" class="username" id="usernamel" name="username" required>
+                <input type="text" class="username" id="usernamel" name="username" required >
                 <br>
                 <label for="password">Mot de passe</label>
                 <input type="password" class="password" id="passwordl" name="password" required>
@@ -46,10 +75,10 @@
             <h2 id="h2_c">Créer un compte</h2>
             <form id="signinform">
                 <label for="Nom">Nom</label>
-                <input type="text" id="Nom" name="Nom" required>
+                <input type="text" id="nomc" name="Nom" required>
                 <br>
                 <label for="Prenom">Prénom</label>
-                <input type="text" id="Prenom" name="Prenom" required>
+                <input type="text" id="prenomc" name="Prenom" onchange ="getPrenom(this.value)" required>
                 <br>
                 <label for="username">Nom d'utilisateur</label>
                 <input type="text" class="username" id="usernamec" name="username" required>
@@ -58,10 +87,10 @@
                 <input type="text" class="mail" id="mailc" name="mail" required>
                 <br>
                 <label for="password">Mot de passe</label>
-                <input type="password"  class="password" id="password1" name="password" required>
+                <input type="password"  class="password" name="password" required>
                 <br>
                 <label for="password">Confirmer votre Mot de passe</label>
-                <input type="password" class="password" id="password2" name="password" required>
+                <input type="password" class="password" name="password" required>
                 <br>
                 <button id="buttoncreer" type="submit">Créer le compte</button>
                 <button id="createc" >Vous avez déja un compte ?</button>
