@@ -12,18 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Envoi de la requête AJAX pour vérifier la connexion
         $.get("service2.php", userData)
-            .done(function(response) {
-                console.log(response); // Vérifie ce que renvoie le serveur
-
-                // Vérifie si une erreur est renvoyée
-                if (response.error) {
-                    alert("Erreur de connexion : " + response.error);
-                } else {
-                    alert("Connexion réussie !");
-                    
-                    
-                }
-            })
+        .done(function(response) {
+            console.log(response); // Vérifiez la réponse du serveur
+            window.location.href = "main.php"; // Redirige vers main.php après connexion
+            
+        })
             .fail(function(error) {
                 console.log(error);
                 alert("Erreur lors de la tentative de connexion.");
