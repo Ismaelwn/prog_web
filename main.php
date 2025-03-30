@@ -34,26 +34,28 @@ if (!$recipes) {
         <section>
             <h2>Nos recettes</h2>
             <div class="recipes">
-                <?php foreach ($recipes as $recipe): ?>
-                    <div class="recipe-card">
-                        <!-- Vérifier si l'URL de l'image existe avant d'afficher -->
-                        <?php if (isset($recipe['imageURL'])): ?>
-                            <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="Image de <?= htmlspecialchars($recipe['nameFR'] ?? 'Recette inconnue') ?>">
-                        <?php else: ?>
-                            <p>Image non disponible</p>
-                        <?php endif; ?>
+    <?php foreach ($recipes as $recipe): ?>
+        <div class="recipe-card">
+            <!-- Vérifie si l'URL de l'image existe avant d'afficher -->
+            <?php if (isset($recipe['imageURL']) && !empty($recipe['imageURL'])): ?>
+                <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="Image de <?= htmlspecialchars($recipe['nameFR'] ?? 'Recette inconnue') ?>">
+            <?php else: ?>
+                <!-- Affiche un carré blanc si l'image est manquante -->
+                <div class="no-image">Image non disponible</div>
+            <?php endif; ?>
 
-                        <!-- Vérification de la clé "nameFR" -->
-                        <h3><?= htmlspecialchars($recipe['nameFR'] ?? $recipe['name'] ?? 'Nom de recette inconnu') ?></h3>
+            <!-- Vérification de la clé "nameFR" -->
+            <h3><?= htmlspecialchars($recipe['nameFR'] ?? $recipe['name'] ?? 'Nom de recette inconnu') ?></h3>
 
-                        <!-- Vérification de la clé "Author" -->
-                        <p>Auteur : <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
+            <!-- Vérification de la clé "Author" -->
+            <p>Auteur : <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
 
-                        <button class="like-btn">Like</button>
-                        <a href="details.php?id=<?= urlencode($recipe['nameFR'] ?? $recipe['name']) ?>" class="more-btn">+ Plus</a>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+            <button class="like-btn">Like</button>
+            <a href="details.php?id=<?= urlencode($recipe['nameFR'] ?? $recipe['name']) ?>" class="more-btn">+ Plus</a>
+        </div>
+    <?php endforeach; ?>
+</div>
+
         </section>
     </main>
     <footer>
