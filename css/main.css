@@ -129,9 +129,5 @@ footer {
     text-align: center;
 }
 
-/* Pour les petits écrans, une seule carte par ligne */
-@media (max-width: 600px) {
-    .recipe-card {
-        width: 100%;
-    }
-}
+
+

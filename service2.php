@@ -1,8 +1,9 @@
 <?php
+session_start();  // Démarrer la session PHP
+
 header('Content-Type: application/json; charset=utf-8');
 
 $file = "json/users.json";
-
 
 // Vérifier si les données de connexion sont envoyées via GET
 if (isset($_GET["username"]) && isset($_GET["password"])) {
@@ -25,7 +26,8 @@ if (isset($_GET["username"]) && isset($_GET["password"])) {
     foreach ($jsonData as $user) {
         if ($user["username"] === $username) {
             if ($user["password"] === $password) {
-                // Connexion réussie
+                // Connexion réussie, démarrer une session
+                $_SESSION['username'] = $username;  // Stocker le nom d'utilisateur dans la session
                 echo json_encode(["message" => "Connexion réussie !"]);
                 die();
             } else {

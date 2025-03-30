@@ -14,12 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
         $.get("service2.php", userData)
         .done(function(response) {
             console.log(response); // Vérifiez la réponse du serveur
-            window.location.href = "main.php"; // Redirige vers main.php après connexion
-            
+            if (response.message === "Connexion réussie !") {
+                // Redirection vers la page après connexion réussie
+                window.location.href = "main.php";  // Rediriger vers la page d'accueil après connexion
+            }
         })
-            .fail(function(error) {
-                console.log(error);
-                alert("Erreur lors de la tentative de connexion.");
-            });
+        .fail(function(error) {
+            console.log(error);
+            alert("Erreur lors de la tentative de connexion.");
+        });
     });
 });
