@@ -12,6 +12,7 @@
 <body>
     <div id="form_connection" style="display: block;">
         <h2 id="h2_l">Connexion</h2>
+        <button type="button" id="bmainl" onclick="window.location.href='main.php'">&times</button>
         <form id="loginform">
             <label for="username">Nom d'utilisateur</label>
             <input type="text" class="username" id="usernamel" name="username" required>
@@ -26,7 +27,8 @@
     </div>
 
     <div id="form_creer" style="display: none;">
-        <h2 id="h2_c">Créer un compte</h2>
+        <h2 id="h2_c">Créer un compte</h2> 
+        <button type="button" id="bmainc" onclick="window.location.href='main.php'">&times</button>
         <form id="signinform">
             <label for="Nom">Nom</label>
             <input type="text" id="nomc" name="Nom" required>
@@ -53,6 +55,8 @@
             <button type="submit" id="submit_register">Créer le compte</button>
             <button type="button" id="createc">Vous avez déjà un compte ?</button>
         </form>
+
+        
     </div>
 </body>
 </html>
