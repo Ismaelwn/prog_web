@@ -79,3 +79,38 @@ footer {
     background-color: #ddd;
     color: #333;
 }
+
+/* Styles de base des cartes de recettes */
+.recipe-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    box-sizing: border-box; /* Ajouté pour éviter que le padding ne dépasse */
+    width: 48%; /* Chaque carte occupe 48% de la largeur de son conteneur */
+    margin-bottom: 20px; /* Espacement vertical entre les cartes */
+}
+
+/* Style des images dans les cartes pour qu'elles aient toutes la même taille */
+.recipe-card img {
+    width: 100%; /* Prend toute la largeur disponible */
+    height: 200px; /* Fixe la hauteur des images */
+    object-fit: cover; /* L'image remplit le conteneur sans déformation */
+    border-radius: 4px;
+}
+
+.recipes {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux cartes de se déplacer sur la ligne suivante */
+    justify-content: space-between; /* Espacement égal entre les cartes */
+}
+
+/* Ajustement pour les petits écrans */
+@media (max-width: 600px) {
+    .recipe-card {
+        width: 100%; /* Sur les petits écrans, les cartes prennent toute la largeur */
+    }
+}
