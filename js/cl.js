@@ -112,10 +112,7 @@ function creerCompte() {
         password: $("#passwordc']").val(),
         role: $("select[name='Role']").val()
     };
-
-    
-
-        $.ajax({
+    $.ajax({
             method: "GET",
             url: "service.php",
             data: userData,

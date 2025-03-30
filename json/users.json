@@ -149,5 +149,35 @@
         "role": [
             "cuisinier"
         ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "ismael_",
+        "password": "Matuidi11.",
+        "mail": "izoonefc1@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "mmj",
+        "password": "Matuidi11.",
+        "mail": "izoonefcj@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "izoonefc@gmail.com",
+        "password": "Matuidi11.",
+        "mail": "ismaf91sn@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
     }
 ]

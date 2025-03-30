@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/cl.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/cl.js"></script>
+    <script src="js/login.js"></script>
 </head>
 <body>
     <div id="form_connection" style="display: block;">
