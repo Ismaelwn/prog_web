@@ -1,8 +1,6 @@
-const registerForm = document.getElementById("form_creer");    
-
 // Validation du formulaire d'inscription avant envoi
 $("#signinform").submit(function(e) {
-    e.preventDefault(); // Empêche la soumission du formulaire/raffraichissement de la page
+    e.preventDefault(); // Empêche la soumission du formulaire
     
     var userData = {
         nom: $("#nomc").val(),
@@ -34,12 +32,8 @@ $("#signinform").submit(function(e) {
             }
 
             // Si les données sont valides, envoie-les au serveur sans geler la page
-            $.ajax({
-                method: "GET",
-                url: "service.php",
-                data: userData,
-            }).done(function(response) {
-                    // Message de succès sans arrêter l'interaction avec la page
+            $.get("service.php", userData)
+                .done(function(response) {
                     alert("Compte créé avec succès !");
                     console.log(response);
 
@@ -56,7 +50,6 @@ $("#signinform").submit(function(e) {
                     $("select[name='Role']").val('cuisinier'); // Remettre la valeur par défaut du rôle
                 })
                 .fail(function(error) {
-                    // En cas d'erreur, afficher un message sans bloquer la page
                     console.log(error);
                     alert("Erreur lors de la création du compte.");
                 });
@@ -86,25 +79,3 @@ function verifierMotDePasse(password) {
     return regex.test(password); // Retourne true si le mot de passe respecte les conditions
 }
 
-
-function creerCompte() {
-    var userData = {
-        nom: $("#nomc").val(),
-        prenom: $("#prenomc").val(),
-        username: $("#usernamec").val(),
-        mail: $("#mailc").val(),
-        password: $("#passwordc']").val(),
-        role: $("select[name='Role']").val()
-    };
-    $.ajax({
-            method: "GET",
-            url: "service.php",
-            data: userData,
-        }).done(function(response) {
-            alert("Compte créé avec succès !");
-            console.log(response);
-        }).fail(function(error) {
-            console.log(error);
-            alert("Erreur lors de la création du compte.");
-        });
-    };
