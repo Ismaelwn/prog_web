@@ -1,5 +1,143 @@
-{
-    "nom": null,
-    "prenom": null,
-    "username": null
-}
+[
+    {
+        "nom": "eeeeeeee",
+        "prenom": "eeeeeeee",
+        "username": "eeeee",
+        "password": "",
+        "mail": "omemem@gmgmm.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "zzzzzz",
+        "prenom": "zzzzzzz",
+        "username": "zzzzzzzzz",
+        "password": "",
+        "mail": "zzzzzzzzzzzzzzzzzzzz@zzzzzz.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "zzzzzzz",
+        "prenom": "zzzzzzzzz",
+        "username": "zzzzzzzzzz",
+        "password": "",
+        "mail": "zzzzzzzzzzzzzzzzzzzz@zzzzzz.com",
+        "role": [
+            "cuisinier",
+            "askchef"
+        ]
+    },
+    {
+        "nom": "zzzzzzzzzz",
+        "prenom": "zzzzzzzzz",
+        "username": "m",
+        "password": "",
+        "mail": "zzzzzzzzzzzzzzzzzzzz@zzzzzz.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "isma78sn",
+        "password": "",
+        "mail": "izoonefc@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "isma78sne",
+        "password": "",
+        "mail": "izooneefc@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "dd",
+        "prenom": "ddd",
+        "username": "dddd",
+        "password": "",
+        "mail": "isma91sn@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "zzzzzzzz",
+        "prenom": "zzzzzzzzzz",
+        "username": "zzzzzz",
+        "password": "",
+        "mail": "ismael.wane@universite-paris-saclay.fr",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "ssssssssssss@gmgm.com",
+        "password": "",
+        "mail": "izoondefc@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "sssssss",
+        "prenom": "sssssss",
+        "username": "sssssssssss",
+        "password": "",
+        "mail": "ismael.wanes@universite-paris-saclay.fr",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "ssssssssssss",
+        "prenom": "sssssssssss",
+        "username": "ssssssssssssa",
+        "password": "Matuidi11.",
+        "mail": "isma91sn@gmail.comaa",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "ssssssss",
+        "prenom": "sssssssss",
+        "username": "ssssssssssssss",
+        "password": "Matuidi11.",
+        "mail": "sssssssssssssss@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "dddddddd",
+        "password": "Matuidi11.",
+        "mail": "izooznefc@gmail.com",
+        "role": [
+            "cuisinier"
+        ]
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "ismael.wane",
+        "password": "Matuidi11.",
+        "mail": "ismael.wanke@universite-paris-saclay.fr",
+        "role": [
+            "cuisinier"
+        ]
+    }
+]

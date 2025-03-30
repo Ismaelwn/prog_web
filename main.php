@@ -15,6 +15,7 @@
                 <li><a href="#">À propos</a></li>
                 <li><a href="#">Contact</a></li>  
                 <li><a href="#">favoris</a></li>  
+                <li><button>Langue</button></li>
                 <li><a href="create_login.php">Se connecter</a></li> <!-- faire switcher entre se connecter/connecté en tant que -->
             </ul>
         </nav>

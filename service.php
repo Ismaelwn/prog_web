@@ -1,36 +1,55 @@
 <?php
-/*
-// Vérifier si les clés existent dans $_GET avant de les utiliser
-$prenom = isset($_GET["prenomc"]) ? $_GET["prenomc"] : null;
-$nom = isset($_GET["nomc"]) ? $_GET["nomc"] : null;
-//$password = isset($_GET["mdp"]) ? $_GET["mdp"] : null; 
-//$mail = isset($_GET["mail"]) ? $_GET["mail"] : null;
-$username = isset($_GET["usernamec"]) ? $_GET["usernamec"] : null; //ok*/
+header('Content-Type: application/json; charset=utf-8');
 
-$prenom = $_GET["prenomc"];
-$nom = $_GET["nomc"];
-$username = $_GET["usernamec"];
-print($prenom);
-print($nom)
-/*
-// Créer un tableau avec les données de l'utilisateur
-$data = array(
-    "nom" => $nom,
-    "prenom" => $prenom,
-    //"email" => $mail,
-    "username" => $username
-    //"mdp" => $password
-);
+$file = "json/users.json";
 
-// Convertir le tableau en JSON
-$json_data = json_encode($data, JSON_PRETTY_PRINT);
+// Vérifier si les données sont envoyées via GET
+if (isset($_GET["nom"]) && isset($_GET["prenom"]) && isset($_GET["username"]) && isset($_GET["mail"]) && isset($_GET["password"]) && isset($_GET["role"])) {
+    
+    $username = $_GET["username"];
+    
+    // Charger les utilisateurs existants
+    if (file_exists($file)) {
+        $jsonData = json_decode(file_get_contents($file), true);
+        if (!is_array($jsonData)) {
+            $jsonData = [];  // Si le fichier est corrompu ou incorrect, on initialise un tableau vide
+        }
+    } else {
+        $jsonData = [];
+    }
 
-// Écrire dans le fichier JSON
-file_put_contents("json/users.json", $json_data);
-*/
-// Message de confirmation
-//echo "Fichier JSON créé avec succès !";
+    // Vérifier si le pseudo est déjà pris
+    foreach ($jsonData as $user) {
+        if ($user["username"] === $username) {
+            echo json_encode(["error" => "Le nom d'utilisateur est déjà pris."]);
+            die();
+        }
+    }
 
+    // Ajouter "cuisinier" au rôle, même si un autre rôle est sélectionné
+    $roleSelectionne = $_GET["role"];
+    $roleList = array_unique(["cuisinier", $roleSelectionne]); // Assure que "cuisinier" est toujours présent
 
+    // Stockage sous forme de dictionnaire (tableau associatif en PHP)
+    $data = [
+        "nom" => $_GET["nom"],
+        "prenom" => $_GET["prenom"],
+        "username" => $username,
+        "password" => $_GET["password"],
+        "mail" => $_GET["mail"],
+        "role" => $roleList  // Stocké sous forme de liste avec "cuisinier" toujours inclus
+    ];
 
+    // Ajouter le nouvel utilisateur à la liste existante
+    $jsonData[] = $data;
+
+    // Sauvegarde des nouvelles données dans le fichier JSON
+    file_put_contents($file, json_encode($jsonData, JSON_PRETTY_PRINT));
+
+    echo json_encode(["message" => "Utilisateur créé avec succès"]);
+    die();
+} else {
+    echo json_encode(["error" => "Données incomplètes"]);
+    die();
+}
 ?>
