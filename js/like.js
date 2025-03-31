@@ -14,7 +14,7 @@ $(document).ready(function() {
     $('.like-btn').each(function() {
         const button = $(this);
         const recipe = button.data('recipe');
-        const isLiked = button.data('liked') === "true";
+        const isLiked = button.data('liked') === true;  // Utiliser un booléen pour 'liked'
         const likeCount = parseInt(button.data('count') || 0);
         
         updateLikeButton(button, isLiked, likeCount);
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 $.get('like_service.php', { recipe: recipe }, function(data) {
                     if (data.success) {
                         updateLikeButton(button, data.action === 'like', data.likes);
-                        button.data('liked', data.action === 'like' ? "true" : "false");
+                        button.data('liked', data.action === 'like' ? true : false);
                         button.data('count', data.likes);
                     } else {
                         alert(data.error || 'Une erreur est survenue.');
@@ -45,7 +45,7 @@ $(document).ready(function() {
             } else {
                 // L'utilisateur n'est pas connecté, rediriger vers la page de connexion
                 alert('Veuillez vous connecter pour aimer une recette.');
-                window.location.href = 'create_login.php';
+                window.location.href = 'create_login.php';  // Rediriger vers la page de connexion
             }
         });
     });

@@ -82,7 +82,7 @@
         "imageURL": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/27\/20\/8\/picVfzLZo.jpg",
         "originalURL": "http:\/\/www.food.com\/recipe\/to-die-for-crock-pot-roast-27208",
         "likers": [
-            "ismael_"
+            "moh_"
         ],
         "commentaire": []
     },
@@ -138,9 +138,7 @@
         ],
         "imageURL": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/50\/84\/7\/picMcSyVd.jpg",
         "originalURL": "http:\/\/www.food.com\/recipe\/roasted-asparagus-50847",
-        "likers": [
-            "ismael_"
-        ],
+        "likers": [],
         "commentaire": []
     },
     {
@@ -194,9 +192,7 @@
             0
         ],
         "imageURL": "img\/imgrecettes\/lentilles-curry.jpg",
-        "likers": [
-            "ismael_"
-        ],
+        "likers": [],
         "commentaire": []
     },
     {
@@ -268,9 +264,7 @@
         ],
         "imageURL": "http:\/\/upload.wikimedia.org\/wikipedia\/commons\/c\/c7\/Spinach_pizza.jpg",
         "originalURL": "https:\/\/fr.wikipedia.org\/wiki\/Pizza",
-        "likers": [
-            "ismael_"
-        ],
+        "likers": [],
         "commentaire": []
     },
     {
@@ -335,9 +329,7 @@
         ],
         "imageURL": "http:\/\/elanaspantry.com\/wp-content\/uploads\/2008\/10\/acorn_squash_with_cranberry.jpg",
         "originalURL": "",
-        "likers": [
-            "ismael_"
-        ],
+        "likers": [],
         "commentaire": []
     },
     {
@@ -385,9 +377,790 @@
         ],
         "imageURL": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/2\/2c\/Yorkshire-puddings.jpg",
         "originalURL": "https:\/\/en.wikipedia.org\/wiki\/Yorkshire_pudding",
-        "likers": [
-            "ismael_"
+        "likers": [],
+        "commentaire": []
+    },{
+        "name": "Mediterranean Quinoa Salad",
+        "nameFR": "Salade de Quinoa Méditerranéenne",
+        "Author": "Claude",
+        "Without": [
+            "NoGluten",
+            "NoMilk",
+            "Vegetarian"
         ],
+        "ingredients": [
+            {
+                "quantity": "1 cup",
+                "name": "quinoa",
+                "type": "Grains"
+            },
+            {
+                "quantity": "2 cups",
+                "name": "vegetable broth",
+                "type": "Misc"
+            },
+            {
+                "quantity": "1",
+                "name": "cucumber, diced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 cup",
+                "name": "cherry tomatoes, halved",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1/2 cup",
+                "name": "kalamata olives, pitted and sliced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1/2 cup",
+                "name": "feta cheese, crumbled",
+                "type": "Dairy"
+            },
+            {
+                "quantity": "1/4 cup",
+                "name": "red onion, finely diced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "3 tablespoons",
+                "name": "olive oil",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "2 tablespoons",
+                "name": "lemon juice",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 teaspoon",
+                "name": "dried oregano",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/2 teaspoon",
+                "name": "salt",
+                "type": "Baking"
+            },
+            {
+                "quantity": "1/4 teaspoon",
+                "name": "black pepper",
+                "type": "Condiments"
+            }
+        ],
+        "ingredientsFR": [
+            {
+                "quantity": "1 tasse",
+                "name": "quinoa",
+                "type": "Céréales"
+            },
+            {
+                "quantity": "2 tasses",
+                "name": "bouillon de légumes",
+                "type": "Divers"
+            },
+            {
+                "quantity": "1",
+                "name": "concombre, en dés",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "1 tasse",
+                "name": "tomates cerises, coupées en deux",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "1/2 tasse",
+                "name": "olives kalamata, dénoyautées et tranchées",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "1/2 tasse",
+                "name": "feta émiettée",
+                "type": "Produits laitiers"
+            },
+            {
+                "quantity": "1/4 tasse",
+                "name": "oignon rouge, finement coupé",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "3 cuillères à soupe",
+                "name": "huile d'olive",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "jus de citron",
+                "type": "Fruits"
+            },
+            {
+                "quantity": "1 cuillère à café",
+                "name": "origan séché",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/2 cuillère à café",
+                "name": "sel",
+                "type": "Épices"
+            },
+            {
+                "quantity": "1/4 cuillère à café",
+                "name": "poivre noir",
+                "type": "Épices"
+            }
+        ],
+        "steps": [
+            "Rinse quinoa under cold water using a fine mesh strainer.",
+            "In a medium saucepan, bring vegetable broth to a boil.",
+            "Add quinoa, reduce heat to low, cover and simmer for 15 minutes until liquid is absorbed.",
+            "Remove from heat and let stand, covered, for 5 minutes.",
+            "Fluff with a fork and transfer to a large bowl to cool for 10 minutes.",
+            "Add cucumber, tomatoes, olives, feta cheese, and red onion to the cooled quinoa.",
+            "In a small bowl, whisk together olive oil, lemon juice, oregano, salt, and pepper.",
+            "Pour dressing over salad and toss gently to combine.",
+            "Refrigerate for at least 30 minutes before serving to allow flavors to meld.",
+            "Serve chilled or at room temperature."
+        ],
+        "stepsFR": [
+            "Rincer le quinoa à l'eau froide à l'aide d'une passoire à mailles fines.",
+            "Dans une casserole moyenne, porter le bouillon de légumes à ébullition.",
+            "Ajouter le quinoa, réduire le feu à doux, couvrir et laisser mijoter pendant 15 minutes jusqu'à ce que le liquide soit absorbé.",
+            "Retirer du feu et laisser reposer, couvert, pendant 5 minutes.",
+            "Aérer avec une fourchette et transférer dans un grand bol pour refroidir pendant 10 minutes.",
+            "Ajouter le concombre, les tomates, les olives, la feta et l'oignon rouge au quinoa refroidi.",
+            "Dans un petit bol, fouetter l'huile d'olive, le jus de citron, l'origan, le sel et le poivre.",
+            "Verser la vinaigrette sur la salade et mélanger délicatement.",
+            "Réfrigérer pendant au moins 30 minutes avant de servir pour permettre aux saveurs de se mélanger.",
+            "Servir froid ou à température ambiante."
+        ],
+        "timers": [
+            0,
+            0,
+            15,
+            5,
+            10,
+            0,
+            0,
+            0,
+            30,
+            0
+        ],
+        "imageURL": "https://www.eatingbirdfood.com/wp-content/uploads/2022/11/mediterranean-quinoa-bowl-hero-674x950.jpg",
+        "originalURL": "",
+        "likers": [],
+        "commentaire": []
+    },{
+        "name": "Honey Garlic Salmon",
+        "nameFR": "Saumon au Miel et à l'Ail",
+        "Author": "Claude",
+        "Without": [
+            "NoGluten",
+            "NoMilk"
+        ],
+        "ingredients": [
+            {
+                "quantity": "4",
+                "name": "salmon fillets (6 oz each)",
+                "type": "Seafood"
+            },
+            {
+                "quantity": "4 tablespoons",
+                "name": "honey",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "3 tablespoons",
+                "name": "soy sauce",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "3 cloves",
+                "name": "garlic, minced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 tablespoon",
+                "name": "fresh lemon juice",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 tablespoon",
+                "name": "olive oil",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/2 teaspoon",
+                "name": "red pepper flakes",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/4 teaspoon",
+                "name": "black pepper",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "2 tablespoons",
+                "name": "fresh parsley, chopped",
+                "type": "Produce"
+            }
+        ],
+        "ingredientsFR": [
+            {
+                "quantity": "4",
+                "name": "filets de saumon (170g chacun)",
+                "type": "Fruits de mer"
+            },
+            {
+                "quantity": "4 cuillères à soupe",
+                "name": "miel",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "3 cuillères à soupe",
+                "name": "sauce soja",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "3 gousses",
+                "name": "d'ail, émincées",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "1 cuillère à soupe",
+                "name": "jus de citron frais",
+                "type": "Fruits"
+            },
+            {
+                "quantity": "1 cuillère à soupe",
+                "name": "huile d'olive",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/2 cuillère à café",
+                "name": "flocons de piment rouge",
+                "type": "Épices"
+            },
+            {
+                "quantity": "1/4 cuillère à café",
+                "name": "poivre noir",
+                "type": "Épices"
+            },
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "persil frais, haché",
+                "type": "Herbes"
+            }
+        ],
+        "steps": [
+            "Preheat oven to 375°F (190°C). Line a baking sheet with foil or parchment paper.",
+            "In a small bowl, whisk together honey, soy sauce, garlic, lemon juice, olive oil, red pepper flakes, and black pepper.",
+            "Place salmon fillets on the prepared baking sheet and pour the marinade over them.",
+            "Bake for 15-20 minutes, or until salmon flakes easily with a fork.",
+            "During the last 5 minutes of cooking, baste the salmon with the sauce from the pan.",
+            "Garnish with chopped parsley before serving.",
+            "Serve with rice and steamed vegetables."
+        ],
+        "stepsFR": [
+            "Préchauffer le four à 190°C. Tapisser une plaque de cuisson de papier aluminium ou de papier sulfurisé.",
+            "Dans un petit bol, fouetter le miel, la sauce soja, l'ail, le jus de citron, l'huile d'olive, les flocons de piment rouge et le poivre noir.",
+            "Placer les filets de saumon sur la plaque de cuisson préparée et verser la marinade dessus.",
+            "Cuire au four pendant 15-20 minutes, ou jusqu'à ce que le saumon s'effeuille facilement à la fourchette.",
+            "Pendant les 5 dernières minutes de cuisson, arroser le saumon avec la sauce de la plaque.",
+            "Garnir de persil haché avant de servir.",
+            "Servir avec du riz et des légumes à la vapeur."
+        ],
+        "timers": [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0,
+            0
+        ],
+        "imageURL": "https://www.demotivateur.fr/cdn-cgi/image/fit=contain,width=2560,quality=60/images/cover_recette/1646069702-saumon_roti_ail_miel.jpg"
+        ,"originalURL": "",
+        "likers": [],
+        "commentaire": []
+    },
+    {
+        "name": "Mushroom Risotto",
+        "nameFR": "Risotto aux Champignons",
+        "Author": "Sebastien Feur",
+        "Without": [
+            "NoGluten",
+            "Vegetarian"
+        ],
+        "ingredients": [
+            {
+                "quantity": "6 cups",
+                "name": "vegetable broth",
+                "type": "Misc"
+            },
+            {
+                "quantity": "3 tablespoons",
+                "name": "olive oil",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1",
+                "name": "onion, finely diced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "2 cloves",
+                "name": "garlic, minced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "8 oz",
+                "name": "mushrooms, sliced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 1/2 cups",
+                "name": "arborio rice",
+                "type": "Grains"
+            },
+            {
+                "quantity": "1/2 cup",
+                "name": "dry white wine",
+                "type": "Drinks"
+            },
+            {
+                "quantity": "1/2 cup",
+                "name": "parmesan cheese, grated",
+                "type": "Dairy"
+            },
+            {
+                "quantity": "2 tablespoons",
+                "name": "butter",
+                "type": "Dairy"
+            },
+            {
+                "quantity": "2 tablespoons",
+                "name": "fresh parsley, chopped",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 teaspoon",
+                "name": "salt",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/2 teaspoon",
+                "name": "black pepper",
+                "type": "Condiments"
+            }
+        ],
+        "ingredientsFR": [
+            {
+                "quantity": "6 tasses",
+                "name": "bouillon de légumes",
+                "type": "Divers"
+            },
+            {
+                "quantity": "3 cuillères à soupe",
+                "name": "huile d'olive",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1",
+                "name": "oignon, finement coupé",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "2 gousses",
+                "name": "d'ail, émincées",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "225g",
+                "name": "champignons, tranchés",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "1 1/2 tasses",
+                "name": "riz arborio",
+                "type": "Céréales"
+            },
+            {
+                "quantity": "1/2 tasse",
+                "name": "vin blanc sec",
+                "type": "Boissons"
+            },
+            {
+                "quantity": "1/2 tasse",
+                "name": "parmesan râpé",
+                "type": "Produits laitiers"
+            },
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "beurre",
+                "type": "Produits laitiers"
+            },
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "persil frais, haché",
+                "type": "Herbes"
+            },
+            {
+                "quantity": "1 cuillère à café",
+                "name": "sel",
+                "type": "Épices"
+            },
+            {
+                "quantity": "1/2 cuillère à café",
+                "name": "poivre noir",
+                "type": "Épices"
+            }
+        ],
+        "steps": [
+            "In a medium saucepan, heat the vegetable broth over low heat and keep it warm.",
+            "In a large saucepan or Dutch oven, heat 2 tablespoons of olive oil over medium heat.",
+            "Add the onion and cook until softened, about 3-4 minutes.",
+            "Add the garlic and cook for another 30 seconds until fragrant.",
+            "Add the remaining tablespoon of olive oil and the mushrooms. Cook until mushrooms are tender and lightly browned, about 5 minutes.",
+            "Add the arborio rice and stir to coat with oil, toasting for about 2 minutes.",
+            "Pour in the white wine and stir until it's fully absorbed by the rice.",
+            "Add 1 cup of warm broth to the rice mixture and stir gently until the liquid is absorbed.",
+            "Continue adding broth, 1/2 cup at a time, stirring frequently and allowing each addition to be absorbed before adding more.",
+            "Cook until the rice is creamy and tender but still firm to the bite, about 18-20 minutes total.",
+            "Remove from heat and stir in the parmesan cheese, butter, parsley, salt, and pepper.",
+            "Cover and let stand for 2 minutes before serving.",
+            "Serve immediately, garnished with additional parmesan if desired."
+        ],
+        "stepsFR": [
+            "Dans une casserole moyenne, chauffer le bouillon de légumes à feu doux et le garder chaud.",
+            "Dans une grande casserole ou cocotte, chauffer 2 cuillères à soupe d'huile d'olive à feu moyen.",
+            "Ajouter l'oignon et cuire jusqu'à ce qu'il soit ramolli, environ 3-4 minutes.",
+            "Ajouter l'ail et cuire encore 30 secondes jusqu'à ce qu'il dégage son parfum.",
+            "Ajouter la cuillère à soupe d'huile d'olive restante et les champignons. Cuire jusqu'à ce que les champignons soient tendres et légèrement dorés, environ 5 minutes.",
+            "Ajouter le riz arborio et remuer pour l'enrober d'huile, en le faisant griller pendant environ 2 minutes.",
+            "Verser le vin blanc et remuer jusqu'à ce qu'il soit complètement absorbé par le riz.",
+            "Ajouter 1 tasse de bouillon chaud au mélange de riz et remuer doucement jusqu'à ce que le liquide soit absorbé.",
+            "Continuer à ajouter du bouillon, 1/2 tasse à la fois, en remuant fréquemment et en permettant à chaque ajout d'être absorbé avant d'en ajouter plus.",
+            "Cuire jusqu'à ce que le riz soit crémeux et tendre mais encore ferme sous la dent, environ 18-20 minutes au total.",
+            "Retirer du feu et incorporer le parmesan, le beurre, le persil, le sel et le poivre.",
+            "Couvrir et laisser reposer 2 minutes avant de servir.",
+            "Servir immédiatement, garni de parmesan supplémentaire si désiré."
+        ],
+        "timers": [
+            0,
+            0,
+            4,
+            1,
+            5,
+            2,
+            0,
+            0,
+            0,
+            20,
+            0,
+            2,
+            0
+        ],
+        "imageURL": "https://img-3.journaldesfemmes.fr/EP0XCaoHsL7OsF8OPCYkq-eUxmg=/750x500/e3bbf2e440ea4914a56bc5427a8081f6/ccmcms-jdf/39904280.jpg",
+        "originalURL": "",
+        "likers": [],
+        "commentaire": []
+    },
+    {
+        "name": "Chocolate Avocado Mousse",
+        "nameFR": "Mousse au Chocolat à l'Avocat",
+        "Author": "Ismael LeRoi",
+        "Without": [
+            "NoGluten",
+            "NoMilk",
+            "Vegan"
+        ],
+        "ingredients": [
+            {
+                "quantity": "2",
+                "name": "ripe avocados",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1/3 cup",
+                "name": "cocoa powder",
+                "type": "Baking"
+            },
+            {
+                "quantity": "1/4 cup",
+                "name": "maple syrup",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "2 tablespoons",
+                "name": "coconut milk",
+                "type": "Dairy"
+            },
+            {
+                "quantity": "1 teaspoon",
+                "name": "vanilla extract",
+                "type": "Baking"
+            },
+            {
+                "quantity": "1/8 teaspoon",
+                "name": "salt",
+                "type": "Baking"
+            },
+            {
+                "quantity": "2 tablespoons",
+                "name": "dark chocolate chips (optional, for garnish)",
+                "type": "Baking"
+            }
+        ],
+        "ingredientsFR": [
+            {
+                "quantity": "2",
+                "name": "avocats mûrs",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "1/3 tasse",
+                "name": "poudre de cacao",
+                "type": "Pâtisserie"
+            },
+            {
+                "quantity": "1/4 tasse",
+                "name": "sirop d'érable",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "lait de coco",
+                "type": "Produits laitiers"
+            },
+            {
+                "quantity": "1 cuillère à café",
+                "name": "extrait de vanille",
+                "type": "Pâtisserie"
+            },
+            {
+                "quantity": "1/8 cuillère à café",
+                "name": "sel",
+                "type": "Épices"
+            },
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "pépites de chocolat noir (facultatif, pour la garniture)",
+                "type": "Pâtisserie"
+            }
+        ],
+        "steps": [
+            "Cut avocados in half, remove the pits, and scoop the flesh into a food processor or blender.",
+            "Add cocoa powder, maple syrup, coconut milk, vanilla extract, and salt to the avocado.",
+            "Blend until completely smooth, stopping to scrape down the sides as needed.",
+            "Taste and adjust sweetness if necessary by adding more maple syrup.",
+            "Spoon the mousse into serving dishes.",
+            "Refrigerate for at least 2 hours to allow the mousse to set and the flavors to develop.",
+            "Before serving, garnish with dark chocolate chips or shavings if desired.",
+            "Serve chilled. The mousse will keep in the refrigerator for up to 2 days."
+        ],
+        "stepsFR": [
+            "Couper les avocats en deux, retirer les noyaux et prélever la chair dans un robot culinaire ou un mixeur.",
+            "Ajouter la poudre de cacao, le sirop d'érable, le lait de coco, l'extrait de vanille et le sel à l'avocat.",
+            "Mixer jusqu'à obtenir une consistance parfaitement lisse, en s'arrêtant pour racler les bords si nécessaire.",
+            "Goûter et ajuster la douceur si nécessaire en ajoutant plus de sirop d'érable.",
+            "Verser la mousse dans des coupes de service.",
+            "Réfrigérer pendant au moins 2 heures pour permettre à la mousse de prendre et aux saveurs de se développer.",
+            "Avant de servir, garnir de pépites ou de copeaux de chocolat noir si désiré.",
+            "Servir frais. La mousse se conservera au réfrigérateur jusqu'à 2 jours."
+        ],
+        "timers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            120,
+            0,
+            0
+        ],
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Mi75rGhxZJ55vlGIBrPD7mv0IarK4BmrmQ&s",
+        "originalURL": "",
+        "likers": [],
+        "commentaire": []
+    },
+    {
+        "name": "Shakshuka",
+        "nameFR": "Shakshuka",
+        "Author": "CKarim bjbjb",
+        "Without": [
+            "NoGluten",
+            "NoMilk",
+            "Vegetarian"
+        ],
+        "ingredients": [
+            {
+                "quantity": "2 tablespoons",
+                "name": "olive oil",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1",
+                "name": "onion, diced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1",
+                "name": "red bell pepper, diced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "4 cloves",
+                "name": "garlic, minced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "2 teaspoons",
+                "name": "paprika",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1 teaspoon",
+                "name": "cumin",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/4 teaspoon",
+                "name": "cayenne pepper",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1 can (28 oz)",
+                "name": "diced tomatoes",
+                "type": "Canned"
+            },
+            {
+                "quantity": "6",
+                "name": "eggs",
+                "type": "Dairy"
+            },
+            {
+                "quantity": "1/2 cup",
+                "name": "feta cheese, crumbled",
+                "type": "Dairy"
+            },
+            {
+                "quantity": "2 tablespoons",
+                "name": "fresh parsley, chopped",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1",
+                "name": "salt and pepper to taste",
+                "type": "Condiments"
+            }
+        ],
+        "ingredientsFR": [
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "huile d'olive",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1",
+                "name": "oignon, coupé en dés",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "1",
+                "name": "poivron rouge, coupé en dés",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "4 gousses",
+                "name": "d'ail, émincées",
+                "type": "Légumes"
+            },
+            {
+                "quantity": "2 cuillères à café",
+                "name": "paprika",
+                "type": "Épices"
+            },
+            {
+                "quantity": "1 cuillère à café",
+                "name": "cumin",
+                "type": "Épices"
+            },
+            {
+                "quantity": "1/4 cuillère à café",
+                "name": "piment de Cayenne",
+                "type": "Épices"
+            },
+            {
+                "quantity": "1 boîte (800g)",
+                "name": "tomates concassées",
+                "type": "Conserves"
+            },
+            {
+                "quantity": "6",
+                "name": "œufs",
+                "type": "Produits laitiers"
+            },
+            {
+                "quantity": "1/2 tasse",
+                "name": "feta émiettée",
+                "type": "Produits laitiers"
+            },
+            {
+                "quantity": "2 cuillères à soupe",
+                "name": "persil frais, haché",
+                "type": "Herbes"
+            },
+            {
+                "quantity": "1",
+                "name": "sel et poivre au goût",
+                "type": "Épices"
+            }
+        ],
+        "steps": [
+            "Heat olive oil in a large, deep skillet over medium heat.",
+            "Add onion and bell pepper. Cook until softened, about 5 minutes.",
+            "Add garlic and cook for another minute until fragrant.",
+            "Stir in paprika, cumin, and cayenne pepper and cook for 30 seconds to toast the spices.",
+            "Pour in the diced tomatoes with their juice. Season with salt and pepper.",
+            "Simmer for 10 minutes, until the sauce has thickened slightly.",
+            "Using a spoon, make 6 indentations in the sauce for the eggs.",
+            "Crack an egg into each indentation.",
+            "Cover the skillet and cook for 5-8 minutes, until the egg whites are set but the yolks are still runny.",
+            "Sprinkle crumbled feta cheese and chopped parsley over the top.",
+            "Serve directly from the skillet with crusty bread for dipping."
+        ],
+        "stepsFR": [
+            "Chauffer l'huile d'olive dans une grande poêle profonde à feu moyen.",
+            "Ajouter l'oignon et le poivron. Cuire jusqu'à ce qu'ils soient ramollis, environ 5 minutes.",
+            "Ajouter l'ail et cuire encore une minute jusqu'à ce qu'il dégage son parfum.",
+            "Incorporer le paprika, le cumin et le piment de Cayenne et cuire pendant 30 secondes pour torréfier les épices.",
+            "Verser les tomates concassées avec leur jus. Assaisonner de sel et de poivre.",
+            "Laisser mijoter pendant 10 minutes, jusqu'à ce que la sauce ait légèrement épaissi.",
+            "À l'aide d'une cuillère, faire 6 renfoncements dans la sauce pour les œufs.",
+            "Casser un œuf dans chaque renfoncement.",
+            "Couvrir la poêle et cuire pendant 5-8 minutes, jusqu'à ce que les blancs d'œufs soient pris mais que les jaunes soient encore coulants.",
+            "Saupoudrer de feta émiettée et de persil haché sur le dessus.",
+            "Servir directement de la poêle avec du pain croustillant pour tremper."
+        ],
+        "timers": [
+            0,
+            5,
+            1,
+            1,
+            0,
+            10,
+            0,
+            0,
+            8,
+            0,
+            0
+        ],
+        "imageURL": "https://www.delscookingtwist.com/wp-content/uploads/2021/03/Traditional-Shakshuka-With-Feta-Cheese_1.jpg",
+        "originalURL": "",
+        "likers": [],
         "commentaire": []
     }
 ]

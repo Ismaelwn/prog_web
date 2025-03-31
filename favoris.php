@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// Vérifier si l'utilisateur est connecté
 $isConnected = isset($_SESSION["username"]);
 $currentUser = $isConnected ? $_SESSION["username"] : '';
 
@@ -23,27 +25,33 @@ $recipes = json_decode(file_get_contents('json/recipes.json'), true);
 if (!$recipes) {
     die("Erreur lors du chargement des recettes.");
 }
-?>
 
+// Filtrer les recettes que l'utilisateur a likées
+$likedRecipes = [];
+foreach ($recipes as $recipe) {
+    if (in_array($recipe['name'], $userLikes) || in_array($recipe['nameFR'], $userLikes)) {
+        $likedRecipes[] = $recipe;
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Re7 - Recettes</title>
+    <title>Favoris - Re7</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/like.js"></script>
-    
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#">Re7</a></li>
+                <li><a href="main.php">Re7</a></li>
                 <li><a href="#">Rechercher</a></li>
                 <li><a href="#">À propos</a></li>
                 <li><a href="#">Contact</a></li>  
@@ -68,36 +76,31 @@ if (!$recipes) {
     </header>
 
     <main>
-        <h1>Bienvenue sur Re7</h1>
-        <section>
-            <h2>Nos recettes</h2>
+        <h1>Mes recettes favorites</h1>
+        <?php if (empty($likedRecipes)): ?>
+            <p>Aucune recette n'est ajoutée à vos favoris.</p>
+        <?php else: ?>
             <div class="recipes">
-                <?php foreach ($recipes as $recipe): ?>
-                    <?php 
-                        $recipeNameFR = htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu');
-                        $recipeName = htmlspecialchars($recipe['name'] ?? 'Unknown name');
-                        $isLiked = $isConnected && isset($userLikes) && in_array($recipeNameFR, $userLikes);
-                        $likeCount = isset($recipe['likers']) ? count($recipe['likers']) : 0;
-                    ?>
+                <?php foreach ($likedRecipes as $recipe): ?>
                     <div class="recipe-card">
                         <?php if (!empty($recipe['imageURL'])): ?>
-                            <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= $recipeNameFR ?>">
+                            <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= htmlspecialchars($recipe['nameFR']) ?>">
                         <?php else: ?>
                             <div class="no-image">Image non disponible</div>
                         <?php endif; ?>
-                        <h3><?= $recipeNameFR ?></h3>
+                        <h3><?= htmlspecialchars($recipe['nameFR']) ?></h3>
                         <p>Auteur : <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
                         <button class="like-btn" 
-                                data-recipe="<?= $recipeNameFR ?>"
-                                data-liked="<?= $isLiked ? 'true' : 'false' ?>"
-                                data-count="<?= $likeCount ?>">
-                            <?= $isLiked ? '❤' : '♡' ?> <?= $likeCount ?>
+                                data-recipe="<?= htmlspecialchars($recipe['nameFR']) ?>"
+                                data-liked="true" 
+                                data-count="<?= isset($recipe['likers']) ? count($recipe['likers']) : 0 ?>">
+                            ❤ <?= isset($recipe['likers']) ? count($recipe['likers']) : 0 ?>
                         </button>
-                        <a href="details.php?id=<?= urlencode($recipeNameFR) ?>" class="more-btn">+ Plus</a>
+                        <a href="details.php?id=<?= urlencode($recipe['name']) ?>" class="more-btn">+ Plus</a>
                     </div>
                 <?php endforeach; ?>
             </div>
-        </section>
+        <?php endif; ?>
     </main>
 
     <footer>
