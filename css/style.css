@@ -33,3 +33,14 @@
 }
 
 
+
+.like-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.like-btn.liked {
+    background-color: #ff6b6b;
+    color: white;
+}

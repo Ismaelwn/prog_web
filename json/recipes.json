@@ -1,9 +1,12 @@
 [
     {
         "name": "Crock Pot Roast",
-        "nameFR": "Roti à la cocotte",
+        "nameFR": "Roti \u00e0 la cocotte",
         "Author": "Unknown",
-        "Without": ["NoGluten", "NoMilk"],
+        "Without": [
+            "NoGluten",
+            "NoMilk"
+        ],
         "ingredients": [
             {
                 "quantity": "1",
@@ -26,7 +29,7 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "water",
                 "type": "Drinks"
             }
@@ -53,7 +56,7 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 verre",
+                "quantity": "1\/2 verre",
                 "name": "eau",
                 "type": "Boisson"
             }
@@ -68,7 +71,7 @@
             "Placer le roti dans la cocotte en fonte",
             "Melanger les sachets de sauces en poudre dans un bol et saupoudrer le roti avec.",
             "Arroser le roti",
-            "Cuire à feu doux entre 7 et 9 heures."
+            "Cuire \u00e0 feu doux entre 7 et 9 heures."
         ],
         "timers": [
             1,
@@ -76,16 +79,22 @@
             1,
             420
         ],
-        "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg",
-        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
-        "likers": [],
+        "imageURL": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/27\/20\/8\/picVfzLZo.jpg",
+        "originalURL": "http:\/\/www.food.com\/recipe\/to-die-for-crock-pot-roast-27208",
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     },
     {
         "name": "Roasted Asparagus",
         "nameFR": "Asperges roties",
         "Author": "Unknown",
-        "Without": ["NoGluten", "NoMilk", "Vegan"],
+        "Without": [
+            "NoGluten",
+            "NoMilk",
+            "Vegan"
+        ],
         "ingredients": [
             {
                 "quantity": "1 lb",
@@ -93,18 +102,18 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1 1/2 tbsp",
+                "quantity": "1 1\/2 tbsp",
                 "name": "olive oil",
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 tsp",
+                "quantity": "1\/2 tsp",
                 "name": "kosher salt",
                 "type": "Baking"
             }
         ],
         "steps": [
-            "Preheat oven to 425°F.",
+            "Preheat oven to 425\u00b0F.",
             "Cut off the woody bottom part of the asparagus spears and discard.",
             "With a vegetable peeler, peel off the skin on the bottom 2-3 inches of the spears (this keeps the asparagus from being all.\",string.\", and if you eat asparagus you know what I mean by that).",
             "Place asparagus on foil-lined baking sheet and drizzle with olive oil.",
@@ -127,16 +136,22 @@
             0,
             0
         ],
-        "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/50/84/7/picMcSyVd.jpg",
-        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847",
-        "likers": [],
+        "imageURL": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/50\/84\/7\/picMcSyVd.jpg",
+        "originalURL": "http:\/\/www.food.com\/recipe\/roasted-asparagus-50847",
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     },
     {
         "name": "Curried Lentils and Rice",
         "nameFR": "Lentilles et Riz au curry",
         "Author": "Unknown",
-        "Without": ["NoGluten", "NoMilk", "Vegan"],
+        "Without": [
+            "NoGluten",
+            "NoMilk",
+            "Vegan"
+        ],
         "ingredients": [
             {
                 "quantity": "1 quart",
@@ -149,7 +164,7 @@
                 "type": "Misc"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "basmati rice",
                 "type": "Misc"
             },
@@ -178,15 +193,19 @@
             20,
             0
         ],
-        "imageURL": "img/imgrecettes/lentilles-curry.jpg",
-        "likers": [],
+        "imageURL": "img\/imgrecettes\/lentilles-curry.jpg",
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     },
     {
         "name": "Big Night Pizza",
         "nameFR": "La pizza des grands soirs",
         "Author": "Unknown",
-        "Without": ["Vegetarian"],
+        "Without": [
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "5 teaspoons",
@@ -219,12 +238,12 @@
                 "type": "Misc"
             },
             {
-                "quantity": "1/4 cup",
+                "quantity": "1\/4 cup",
                 "name": "pizza sauce",
                 "type": "Misc"
             },
             {
-                "quantity": "3/4 cup",
+                "quantity": "3\/4 cup",
                 "name": "mozzarella cheese",
                 "type": "Dairy"
             }
@@ -247,16 +266,21 @@
             15,
             0
         ],
-        "imageURL": "http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg",
-        "originalURL": "https://fr.wikipedia.org/wiki/Pizza",
-        "likers": [],
+        "imageURL": "http:\/\/upload.wikimedia.org\/wikipedia\/commons\/c\/c7\/Spinach_pizza.jpg",
+        "originalURL": "https:\/\/fr.wikipedia.org\/wiki\/Pizza",
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     },
     {
         "name": "Cranberry and Apple Stuffed Acorn Squash Recipe",
-        "nameFR": "Courge poivrée farcies aux cranberries et aux pommes",
+        "nameFR": "Courge poivr\u00e9e farcies aux cranberries et aux pommes",
         "Author": "Unknown",
-        "Without": ["NoGluten", "Vegetarian"],
+        "Without": [
+            "NoGluten",
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "2",
@@ -270,11 +294,11 @@
             },
             {
                 "quantity": "2",
-                "name": "apples chopped into 1/4 inch pieces",
+                "name": "apples chopped into 1\/4 inch pieces",
                 "type": "Produce"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "dried cranberries",
                 "type": "Produce"
             },
@@ -292,7 +316,7 @@
         "steps": [
             "Cut squash in half, remove seeds.",
             "Place squash in baking dish, cut-side down.",
-            "Pour 1/4-inch water into dish.",
+            "Pour 1\/4-inch water into dish.",
             "Bake for 30 minutes at 350 degrees F.",
             "In large bowl, combine remaining ingredients.",
             "Remove squash from oven, fill with mix.",
@@ -309,16 +333,20 @@
             30,
             0
         ],
-        "imageURL": "http://elanaspantry.com/wp-content/uploads/2008/10/acorn_squash_with_cranberry.jpg",
+        "imageURL": "http:\/\/elanaspantry.com\/wp-content\/uploads\/2008\/10\/acorn_squash_with_cranberry.jpg",
         "originalURL": "",
-        "likers": [],
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     },
     {
         "name": "Mic's Yorkshire Puds",
         "nameFR": "Yorkshire pudding de Mickey",
         "Author": "Unknown",
-        "Without": ["Vegetarian"],
+        "Without": [
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "200g",
@@ -342,7 +370,7 @@
             }
         ],
         "steps": [
-            "Preheat oven to 200°C (400°F).",
+            "Preheat oven to 200\u00b0C (400\u00b0F).",
             "Mix flour, eggs, and milk until smooth.",
             "Add vegetable oil to a muffin tin and heat in oven for 10 minutes.",
             "Pour batter into hot muffin tin and bake for 20 minutes.",
@@ -355,9 +383,11 @@
             20,
             0
         ],
-        "imageURL": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Yorkshire-puddings.jpg",
-        "originalURL": "https://en.wikipedia.org/wiki/Yorkshire_pudding",
-        "likers": [],
+        "imageURL": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/2\/2c\/Yorkshire-puddings.jpg",
+        "originalURL": "https:\/\/en.wikipedia.org\/wiki\/Yorkshire_pudding",
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     }
 ]

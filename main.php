@@ -1,12 +1,31 @@
 <?php
 session_start();
 $isConnected = isset($_SESSION["username"]);
+$currentUser = $isConnected ? $_SESSION["username"] : '';
+
+// Charger les utilisateurs pour vérifier les likes actuels
+$users = [];
+if ($isConnected) {
+    $usersJson = file_get_contents('json/users.json');
+    $users = json_decode($usersJson, true);
+    $userLikes = [];
+    
+    // Trouver les likes de l'utilisateur actuel
+    foreach ($users as $user) {
+        if ($user['username'] === $currentUser) {
+            $userLikes = isset($user['likes']) ? $user['likes'] : [];
+            break;
+        }
+    }
+}
 
 $recipes = json_decode(file_get_contents('json/recipes.json'), true);
 if (!$recipes) {
     die("Erreur lors du chargement des recettes.");
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,6 +34,10 @@ if (!$recipes) {
     <title>Re7 - Recettes</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/like.js"></script>
+    
 </head>
 <body>
     <header>
@@ -50,16 +73,27 @@ if (!$recipes) {
             <h2>Nos recettes</h2>
             <div class="recipes">
                 <?php foreach ($recipes as $recipe): ?>
+                    <?php 
+                        $recipeNameFR = htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu');
+                        $recipeName = htmlspecialchars($recipe['name'] ?? 'Unknown name');
+                        $isLiked = $isConnected && isset($userLikes) && in_array($recipeNameFR, $userLikes);
+                        $likeCount = isset($recipe['likers']) ? count($recipe['likers']) : 0;
+                    ?>
                     <div class="recipe-card">
                         <?php if (!empty($recipe['imageURL'])): ?>
-                            <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= htmlspecialchars($recipe['nameFR'] ?? 'Recette inconnue') ?>">
+                            <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= $recipeNameFR ?>">
                         <?php else: ?>
                             <div class="no-image">Image non disponible</div>
                         <?php endif; ?>
-                        <h3><?= htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu') ?></h3>
+                        <h3><?= $recipeNameFR ?></h3>
                         <p>Auteur : <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
-                        <button class="like-btn">Like</button>
-                        <a href="details.php?id=<?= urlencode($recipe['nameFR'] ?? 'inconnu') ?>" class="more-btn">+ Plus</a>
+                        <button class="like-btn" 
+                                data-recipe="<?= $recipeNameFR ?>"
+                                data-liked="<?= $isLiked ? 'true' : 'false' ?>"
+                                data-count="<?= $likeCount ?>">
+                            <?= $isLiked ? '❤' : '♡' ?> <?= $likeCount ?>
+                        </button>
+                        <a href="details.php?id=<?= urlencode($recipeNameFR) ?>" class="more-btn">+ Plus</a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -70,7 +104,5 @@ if (!$recipes) {
         <p>&copy; 2025 Mon Site Web. Tous droits réservés.</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>

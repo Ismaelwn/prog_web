@@ -10,7 +10,14 @@
             "admin"
         ],
         "posts": [],
-        "likes": [],
+        "likes": [
+            "Lentilles et Riz au curry",
+            "La pizza des grands soirs",
+            "Yorkshire pudding de Mickey",
+            "Courge poivr\u00e9e farcies aux cranberries et aux pommes",
+            "Roti \u00e0 la cocotte",
+            "Asperges roties"
+        ],
         "recettes": []
     },
     {
