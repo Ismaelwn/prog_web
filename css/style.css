@@ -9,9 +9,6 @@
     align-items: center;
 }
 
-.user-menu:hover {
-    background-color: #777;
-}
 
 /* ====== DROPDOWN MENU ====== */
 .dropdown-menu {
@@ -35,7 +32,4 @@
     font-size: 14px;
 }
 
-.dropdown-menu a:hover {
-    background-color: #f0f0f0;
-}
 

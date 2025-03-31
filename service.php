@@ -37,7 +37,10 @@ if (isset($_GET["nom"]) && isset($_GET["prenom"]) && isset($_GET["username"]) &&
         "username" => $username,
         "password" => $_GET["password"],
         "mail" => $_GET["mail"],
-        "role" => $roleList  // Stocké sous forme de liste avec "cuisinier" toujours inclus
+        "role" => $roleList,  // Stocké sous forme de liste avec "cuisinier" toujours inclus
+        "posts"  => [],
+        "likes"  =>  [],
+        "recettes"  => []
     ];
 
     // Ajouter le nouvel utilisateur à la liste existante

@@ -32,7 +32,8 @@ if (!$recipes) {
                         <span class="username"><?= htmlspecialchars($_SESSION["username"]) ?> ▼</span>
                         <div class="dropdown-menu">
                             <a href="account.php">Votre compte</a>
-                            <a href="account.php">Mes recettes</a>
+                            <a href="account.php">Mon profil</a> <!-- les post et les recettes à la twitter -->
+                            <a href="account.php">Support</a>
                             <a href="logout.php">Se déconnecter</a>
                         </div>
                     </li>
