@@ -2,6 +2,12 @@
 session_start();
 
 // Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION["username"])) {
+    // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+    header("Location: create_login.php");
+    exit(); // Assurez-vous que le script s'arrête après la redirection
+}
+
 $isConnected = isset($_SESSION["username"]);
 $currentUser = $isConnected ? $_SESSION["username"] : '';
 
@@ -41,8 +47,7 @@ foreach ($recipes as $recipe) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoris - Re7</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css">
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/like.js"></script>
@@ -63,7 +68,7 @@ foreach ($recipes as $recipe) {
                         <span class="username"><?= htmlspecialchars($_SESSION["username"]) ?> ▼</span>
                         <div class="dropdown-menu">
                             <a href="account.php">Votre compte</a>
-                            <a href="account.php">Mon profil</a> <!-- les post et les recettes à la twitter -->
+                            <a href="account.php">Mon profil</a>
                             <a href="account.php">Support</a>
                             <a href="logout.php">Se déconnecter</a>
                         </div>

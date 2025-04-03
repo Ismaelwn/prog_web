@@ -9,7 +9,11 @@
             "cuisinier",
             "admin"
         ],
-        "posts": [],
+        "posts": {
+            "0": "comment_67edcdbe9323c",
+            "2": "comment_67edce15e225a",
+            "3": "comment_67edce65e6634"
+        },
         "likes": [],
         "recettes": []
     },
