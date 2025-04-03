@@ -82,7 +82,8 @@
         "imageURL": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/27\/20\/8\/picVfzLZo.jpg",
         "originalURL": "http:\/\/www.food.com\/recipe\/to-die-for-crock-pot-roast-27208",
         "likers": [
-            "moh_"
+            "moh_",
+            "ismael_"
         ],
         "commentaire": []
     },
@@ -138,7 +139,9 @@
         ],
         "imageURL": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/50\/84\/7\/picMcSyVd.jpg",
         "originalURL": "http:\/\/www.food.com\/recipe\/roasted-asparagus-50847",
-        "likers": [],
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     },
     {
@@ -192,7 +195,9 @@
             0
         ],
         "imageURL": "img\/imgrecettes\/lentilles-curry.jpg",
-        "likers": [],
+        "likers": [
+            "ismael_"
+        ],
         "commentaire": []
     },
     {
@@ -379,9 +384,10 @@
         "originalURL": "https:\/\/en.wikipedia.org\/wiki\/Yorkshire_pudding",
         "likers": [],
         "commentaire": []
-    },{
+    },
+    {
         "name": "Mediterranean Quinoa Salad",
-        "nameFR": "Salade de Quinoa Méditerranéenne",
+        "nameFR": "Salade de Quinoa M\u00e9diterran\u00e9enne",
         "Author": "Claude",
         "Without": [
             "NoGluten",
@@ -410,17 +416,17 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "kalamata olives, pitted and sliced",
                 "type": "Produce"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "feta cheese, crumbled",
                 "type": "Dairy"
             },
             {
-                "quantity": "1/4 cup",
+                "quantity": "1\/4 cup",
                 "name": "red onion, finely diced",
                 "type": "Produce"
             },
@@ -440,12 +446,12 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 teaspoon",
+                "quantity": "1\/2 teaspoon",
                 "name": "salt",
                 "type": "Baking"
             },
             {
-                "quantity": "1/4 teaspoon",
+                "quantity": "1\/4 teaspoon",
                 "name": "black pepper",
                 "type": "Condiments"
             }
@@ -454,62 +460,62 @@
             {
                 "quantity": "1 tasse",
                 "name": "quinoa",
-                "type": "Céréales"
+                "type": "C\u00e9r\u00e9ales"
             },
             {
                 "quantity": "2 tasses",
-                "name": "bouillon de légumes",
+                "name": "bouillon de l\u00e9gumes",
                 "type": "Divers"
             },
             {
                 "quantity": "1",
-                "name": "concombre, en dés",
-                "type": "Légumes"
+                "name": "concombre, en d\u00e9s",
+                "type": "L\u00e9gumes"
             },
             {
                 "quantity": "1 tasse",
-                "name": "tomates cerises, coupées en deux",
-                "type": "Légumes"
+                "name": "tomates cerises, coup\u00e9es en deux",
+                "type": "L\u00e9gumes"
             },
             {
-                "quantity": "1/2 tasse",
-                "name": "olives kalamata, dénoyautées et tranchées",
-                "type": "Légumes"
+                "quantity": "1\/2 tasse",
+                "name": "olives kalamata, d\u00e9noyaut\u00e9es et tranch\u00e9es",
+                "type": "L\u00e9gumes"
             },
             {
-                "quantity": "1/2 tasse",
-                "name": "feta émiettée",
+                "quantity": "1\/2 tasse",
+                "name": "feta \u00e9miett\u00e9e",
                 "type": "Produits laitiers"
             },
             {
-                "quantity": "1/4 tasse",
-                "name": "oignon rouge, finement coupé",
-                "type": "Légumes"
+                "quantity": "1\/4 tasse",
+                "name": "oignon rouge, finement coup\u00e9",
+                "type": "L\u00e9gumes"
             },
             {
-                "quantity": "3 cuillères à soupe",
+                "quantity": "3 cuill\u00e8res \u00e0 soupe",
                 "name": "huile d'olive",
                 "type": "Condiments"
             },
             {
-                "quantity": "2 cuillères à soupe",
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
                 "name": "jus de citron",
                 "type": "Fruits"
             },
             {
-                "quantity": "1 cuillère à café",
-                "name": "origan séché",
+                "quantity": "1 cuill\u00e8re \u00e0 caf\u00e9",
+                "name": "origan s\u00e9ch\u00e9",
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 cuillère à café",
+                "quantity": "1\/2 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "sel",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "1/4 cuillère à café",
+                "quantity": "1\/4 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "poivre noir",
-                "type": "Épices"
+                "type": "\u00c9pices"
             }
         ],
         "steps": [
@@ -525,16 +531,16 @@
             "Serve chilled or at room temperature."
         ],
         "stepsFR": [
-            "Rincer le quinoa à l'eau froide à l'aide d'une passoire à mailles fines.",
-            "Dans une casserole moyenne, porter le bouillon de légumes à ébullition.",
-            "Ajouter le quinoa, réduire le feu à doux, couvrir et laisser mijoter pendant 15 minutes jusqu'à ce que le liquide soit absorbé.",
+            "Rincer le quinoa \u00e0 l'eau froide \u00e0 l'aide d'une passoire \u00e0 mailles fines.",
+            "Dans une casserole moyenne, porter le bouillon de l\u00e9gumes \u00e0 \u00e9bullition.",
+            "Ajouter le quinoa, r\u00e9duire le feu \u00e0 doux, couvrir et laisser mijoter pendant 15 minutes jusqu'\u00e0 ce que le liquide soit absorb\u00e9.",
             "Retirer du feu et laisser reposer, couvert, pendant 5 minutes.",
-            "Aérer avec une fourchette et transférer dans un grand bol pour refroidir pendant 10 minutes.",
+            "A\u00e9rer avec une fourchette et transf\u00e9rer dans un grand bol pour refroidir pendant 10 minutes.",
             "Ajouter le concombre, les tomates, les olives, la feta et l'oignon rouge au quinoa refroidi.",
             "Dans un petit bol, fouetter l'huile d'olive, le jus de citron, l'origan, le sel et le poivre.",
-            "Verser la vinaigrette sur la salade et mélanger délicatement.",
-            "Réfrigérer pendant au moins 30 minutes avant de servir pour permettre aux saveurs de se mélanger.",
-            "Servir froid ou à température ambiante."
+            "Verser la vinaigrette sur la salade et m\u00e9langer d\u00e9licatement.",
+            "R\u00e9frig\u00e9rer pendant au moins 30 minutes avant de servir pour permettre aux saveurs de se m\u00e9langer.",
+            "Servir froid ou \u00e0 temp\u00e9rature ambiante."
         ],
         "timers": [
             0,
@@ -548,13 +554,14 @@
             30,
             0
         ],
-        "imageURL": "https://www.eatingbirdfood.com/wp-content/uploads/2022/11/mediterranean-quinoa-bowl-hero-674x950.jpg",
+        "imageURL": "https:\/\/www.eatingbirdfood.com\/wp-content\/uploads\/2022\/11\/mediterranean-quinoa-bowl-hero-674x950.jpg",
         "originalURL": "",
         "likers": [],
         "commentaire": []
-    },{
+    },
+    {
         "name": "Honey Garlic Salmon",
-        "nameFR": "Saumon au Miel et à l'Ail",
+        "nameFR": "Saumon au Miel et \u00e0 l'Ail",
         "Author": "Claude",
         "Without": [
             "NoGluten",
@@ -592,12 +599,12 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 teaspoon",
+                "quantity": "1\/2 teaspoon",
                 "name": "red pepper flakes",
                 "type": "Condiments"
             },
             {
-                "quantity": "1/4 teaspoon",
+                "quantity": "1\/4 teaspoon",
                 "name": "black pepper",
                 "type": "Condiments"
             },
@@ -614,48 +621,48 @@
                 "type": "Fruits de mer"
             },
             {
-                "quantity": "4 cuillères à soupe",
+                "quantity": "4 cuill\u00e8res \u00e0 soupe",
                 "name": "miel",
                 "type": "Condiments"
             },
             {
-                "quantity": "3 cuillères à soupe",
+                "quantity": "3 cuill\u00e8res \u00e0 soupe",
                 "name": "sauce soja",
                 "type": "Condiments"
             },
             {
                 "quantity": "3 gousses",
-                "name": "d'ail, émincées",
-                "type": "Légumes"
+                "name": "d'ail, \u00e9minc\u00e9es",
+                "type": "L\u00e9gumes"
             },
             {
-                "quantity": "1 cuillère à soupe",
+                "quantity": "1 cuill\u00e8re \u00e0 soupe",
                 "name": "jus de citron frais",
                 "type": "Fruits"
             },
             {
-                "quantity": "1 cuillère à soupe",
+                "quantity": "1 cuill\u00e8re \u00e0 soupe",
                 "name": "huile d'olive",
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 cuillère à café",
+                "quantity": "1\/2 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "flocons de piment rouge",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "1/4 cuillère à café",
+                "quantity": "1\/4 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "poivre noir",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "2 cuillères à soupe",
-                "name": "persil frais, haché",
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
+                "name": "persil frais, hach\u00e9",
                 "type": "Herbes"
             }
         ],
         "steps": [
-            "Preheat oven to 375°F (190°C). Line a baking sheet with foil or parchment paper.",
+            "Preheat oven to 375\u00b0F (190\u00b0C). Line a baking sheet with foil or parchment paper.",
             "In a small bowl, whisk together honey, soy sauce, garlic, lemon juice, olive oil, red pepper flakes, and black pepper.",
             "Place salmon fillets on the prepared baking sheet and pour the marinade over them.",
             "Bake for 15-20 minutes, or until salmon flakes easily with a fork.",
@@ -664,13 +671,13 @@
             "Serve with rice and steamed vegetables."
         ],
         "stepsFR": [
-            "Préchauffer le four à 190°C. Tapisser une plaque de cuisson de papier aluminium ou de papier sulfurisé.",
+            "Pr\u00e9chauffer le four \u00e0 190\u00b0C. Tapisser une plaque de cuisson de papier aluminium ou de papier sulfuris\u00e9.",
             "Dans un petit bol, fouetter le miel, la sauce soja, l'ail, le jus de citron, l'huile d'olive, les flocons de piment rouge et le poivre noir.",
-            "Placer les filets de saumon sur la plaque de cuisson préparée et verser la marinade dessus.",
-            "Cuire au four pendant 15-20 minutes, ou jusqu'à ce que le saumon s'effeuille facilement à la fourchette.",
-            "Pendant les 5 dernières minutes de cuisson, arroser le saumon avec la sauce de la plaque.",
-            "Garnir de persil haché avant de servir.",
-            "Servir avec du riz et des légumes à la vapeur."
+            "Placer les filets de saumon sur la plaque de cuisson pr\u00e9par\u00e9e et verser la marinade dessus.",
+            "Cuire au four pendant 15-20 minutes, ou jusqu'\u00e0 ce que le saumon s'effeuille facilement \u00e0 la fourchette.",
+            "Pendant les 5 derni\u00e8res minutes de cuisson, arroser le saumon avec la sauce de la plaque.",
+            "Garnir de persil hach\u00e9 avant de servir.",
+            "Servir avec du riz et des l\u00e9gumes \u00e0 la vapeur."
         ],
         "timers": [
             0,
@@ -681,8 +688,8 @@
             0,
             0
         ],
-        "imageURL": "https://www.demotivateur.fr/cdn-cgi/image/fit=contain,width=2560,quality=60/images/cover_recette/1646069702-saumon_roti_ail_miel.jpg"
-        ,"originalURL": "",
+        "imageURL": "https:\/\/www.demotivateur.fr\/cdn-cgi\/image\/fit=contain,width=2560,quality=60\/images\/cover_recette\/1646069702-saumon_roti_ail_miel.jpg",
+        "originalURL": "",
         "likers": [],
         "commentaire": []
     },
@@ -721,17 +728,17 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1 1/2 cups",
+                "quantity": "1 1\/2 cups",
                 "name": "arborio rice",
                 "type": "Grains"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "dry white wine",
                 "type": "Drinks"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "parmesan cheese, grated",
                 "type": "Dairy"
             },
@@ -751,7 +758,7 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 teaspoon",
+                "quantity": "1\/2 teaspoon",
                 "name": "black pepper",
                 "type": "Condiments"
             }
@@ -759,63 +766,63 @@
         "ingredientsFR": [
             {
                 "quantity": "6 tasses",
-                "name": "bouillon de légumes",
+                "name": "bouillon de l\u00e9gumes",
                 "type": "Divers"
             },
             {
-                "quantity": "3 cuillères à soupe",
+                "quantity": "3 cuill\u00e8res \u00e0 soupe",
                 "name": "huile d'olive",
                 "type": "Condiments"
             },
             {
                 "quantity": "1",
-                "name": "oignon, finement coupé",
-                "type": "Légumes"
+                "name": "oignon, finement coup\u00e9",
+                "type": "L\u00e9gumes"
             },
             {
                 "quantity": "2 gousses",
-                "name": "d'ail, émincées",
-                "type": "Légumes"
+                "name": "d'ail, \u00e9minc\u00e9es",
+                "type": "L\u00e9gumes"
             },
             {
                 "quantity": "225g",
-                "name": "champignons, tranchés",
-                "type": "Légumes"
+                "name": "champignons, tranch\u00e9s",
+                "type": "L\u00e9gumes"
             },
             {
-                "quantity": "1 1/2 tasses",
+                "quantity": "1 1\/2 tasses",
                 "name": "riz arborio",
-                "type": "Céréales"
+                "type": "C\u00e9r\u00e9ales"
             },
             {
-                "quantity": "1/2 tasse",
+                "quantity": "1\/2 tasse",
                 "name": "vin blanc sec",
                 "type": "Boissons"
             },
             {
-                "quantity": "1/2 tasse",
-                "name": "parmesan râpé",
+                "quantity": "1\/2 tasse",
+                "name": "parmesan r\u00e2p\u00e9",
                 "type": "Produits laitiers"
             },
             {
-                "quantity": "2 cuillères à soupe",
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
                 "name": "beurre",
                 "type": "Produits laitiers"
             },
             {
-                "quantity": "2 cuillères à soupe",
-                "name": "persil frais, haché",
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
+                "name": "persil frais, hach\u00e9",
                 "type": "Herbes"
             },
             {
-                "quantity": "1 cuillère à café",
+                "quantity": "1 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "sel",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "1/2 cuillère à café",
+                "quantity": "1\/2 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "poivre noir",
-                "type": "Épices"
+                "type": "\u00c9pices"
             }
         ],
         "steps": [
@@ -827,26 +834,26 @@
             "Add the arborio rice and stir to coat with oil, toasting for about 2 minutes.",
             "Pour in the white wine and stir until it's fully absorbed by the rice.",
             "Add 1 cup of warm broth to the rice mixture and stir gently until the liquid is absorbed.",
-            "Continue adding broth, 1/2 cup at a time, stirring frequently and allowing each addition to be absorbed before adding more.",
+            "Continue adding broth, 1\/2 cup at a time, stirring frequently and allowing each addition to be absorbed before adding more.",
             "Cook until the rice is creamy and tender but still firm to the bite, about 18-20 minutes total.",
             "Remove from heat and stir in the parmesan cheese, butter, parsley, salt, and pepper.",
             "Cover and let stand for 2 minutes before serving.",
             "Serve immediately, garnished with additional parmesan if desired."
         ],
         "stepsFR": [
-            "Dans une casserole moyenne, chauffer le bouillon de légumes à feu doux et le garder chaud.",
-            "Dans une grande casserole ou cocotte, chauffer 2 cuillères à soupe d'huile d'olive à feu moyen.",
-            "Ajouter l'oignon et cuire jusqu'à ce qu'il soit ramolli, environ 3-4 minutes.",
-            "Ajouter l'ail et cuire encore 30 secondes jusqu'à ce qu'il dégage son parfum.",
-            "Ajouter la cuillère à soupe d'huile d'olive restante et les champignons. Cuire jusqu'à ce que les champignons soient tendres et légèrement dorés, environ 5 minutes.",
+            "Dans une casserole moyenne, chauffer le bouillon de l\u00e9gumes \u00e0 feu doux et le garder chaud.",
+            "Dans une grande casserole ou cocotte, chauffer 2 cuill\u00e8res \u00e0 soupe d'huile d'olive \u00e0 feu moyen.",
+            "Ajouter l'oignon et cuire jusqu'\u00e0 ce qu'il soit ramolli, environ 3-4 minutes.",
+            "Ajouter l'ail et cuire encore 30 secondes jusqu'\u00e0 ce qu'il d\u00e9gage son parfum.",
+            "Ajouter la cuill\u00e8re \u00e0 soupe d'huile d'olive restante et les champignons. Cuire jusqu'\u00e0 ce que les champignons soient tendres et l\u00e9g\u00e8rement dor\u00e9s, environ 5 minutes.",
             "Ajouter le riz arborio et remuer pour l'enrober d'huile, en le faisant griller pendant environ 2 minutes.",
-            "Verser le vin blanc et remuer jusqu'à ce qu'il soit complètement absorbé par le riz.",
-            "Ajouter 1 tasse de bouillon chaud au mélange de riz et remuer doucement jusqu'à ce que le liquide soit absorbé.",
-            "Continuer à ajouter du bouillon, 1/2 tasse à la fois, en remuant fréquemment et en permettant à chaque ajout d'être absorbé avant d'en ajouter plus.",
-            "Cuire jusqu'à ce que le riz soit crémeux et tendre mais encore ferme sous la dent, environ 18-20 minutes au total.",
+            "Verser le vin blanc et remuer jusqu'\u00e0 ce qu'il soit compl\u00e8tement absorb\u00e9 par le riz.",
+            "Ajouter 1 tasse de bouillon chaud au m\u00e9lange de riz et remuer doucement jusqu'\u00e0 ce que le liquide soit absorb\u00e9.",
+            "Continuer \u00e0 ajouter du bouillon, 1\/2 tasse \u00e0 la fois, en remuant fr\u00e9quemment et en permettant \u00e0 chaque ajout d'\u00eatre absorb\u00e9 avant d'en ajouter plus.",
+            "Cuire jusqu'\u00e0 ce que le riz soit cr\u00e9meux et tendre mais encore ferme sous la dent, environ 18-20 minutes au total.",
             "Retirer du feu et incorporer le parmesan, le beurre, le persil, le sel et le poivre.",
             "Couvrir et laisser reposer 2 minutes avant de servir.",
-            "Servir immédiatement, garni de parmesan supplémentaire si désiré."
+            "Servir imm\u00e9diatement, garni de parmesan suppl\u00e9mentaire si d\u00e9sir\u00e9."
         ],
         "timers": [
             0,
@@ -863,14 +870,14 @@
             2,
             0
         ],
-        "imageURL": "https://img-3.journaldesfemmes.fr/EP0XCaoHsL7OsF8OPCYkq-eUxmg=/750x500/e3bbf2e440ea4914a56bc5427a8081f6/ccmcms-jdf/39904280.jpg",
+        "imageURL": "https:\/\/img-3.journaldesfemmes.fr\/EP0XCaoHsL7OsF8OPCYkq-eUxmg=\/750x500\/e3bbf2e440ea4914a56bc5427a8081f6\/ccmcms-jdf\/39904280.jpg",
         "originalURL": "",
         "likers": [],
         "commentaire": []
     },
     {
         "name": "Chocolate Avocado Mousse",
-        "nameFR": "Mousse au Chocolat à l'Avocat",
+        "nameFR": "Mousse au Chocolat \u00e0 l'Avocat",
         "Author": "Ismael LeRoi",
         "Without": [
             "NoGluten",
@@ -884,12 +891,12 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1/3 cup",
+                "quantity": "1\/3 cup",
                 "name": "cocoa powder",
                 "type": "Baking"
             },
             {
-                "quantity": "1/4 cup",
+                "quantity": "1\/4 cup",
                 "name": "maple syrup",
                 "type": "Condiments"
             },
@@ -904,7 +911,7 @@
                 "type": "Baking"
             },
             {
-                "quantity": "1/8 teaspoon",
+                "quantity": "1\/8 teaspoon",
                 "name": "salt",
                 "type": "Baking"
             },
@@ -917,38 +924,38 @@
         "ingredientsFR": [
             {
                 "quantity": "2",
-                "name": "avocats mûrs",
-                "type": "Légumes"
+                "name": "avocats m\u00fbrs",
+                "type": "L\u00e9gumes"
             },
             {
-                "quantity": "1/3 tasse",
+                "quantity": "1\/3 tasse",
                 "name": "poudre de cacao",
-                "type": "Pâtisserie"
+                "type": "P\u00e2tisserie"
             },
             {
-                "quantity": "1/4 tasse",
-                "name": "sirop d'érable",
+                "quantity": "1\/4 tasse",
+                "name": "sirop d'\u00e9rable",
                 "type": "Condiments"
             },
             {
-                "quantity": "2 cuillères à soupe",
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
                 "name": "lait de coco",
                 "type": "Produits laitiers"
             },
             {
-                "quantity": "1 cuillère à café",
+                "quantity": "1 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "extrait de vanille",
-                "type": "Pâtisserie"
+                "type": "P\u00e2tisserie"
             },
             {
-                "quantity": "1/8 cuillère à café",
+                "quantity": "1\/8 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "sel",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "2 cuillères à soupe",
-                "name": "pépites de chocolat noir (facultatif, pour la garniture)",
-                "type": "Pâtisserie"
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
+                "name": "p\u00e9pites de chocolat noir (facultatif, pour la garniture)",
+                "type": "P\u00e2tisserie"
             }
         ],
         "steps": [
@@ -962,14 +969,14 @@
             "Serve chilled. The mousse will keep in the refrigerator for up to 2 days."
         ],
         "stepsFR": [
-            "Couper les avocats en deux, retirer les noyaux et prélever la chair dans un robot culinaire ou un mixeur.",
-            "Ajouter la poudre de cacao, le sirop d'érable, le lait de coco, l'extrait de vanille et le sel à l'avocat.",
-            "Mixer jusqu'à obtenir une consistance parfaitement lisse, en s'arrêtant pour racler les bords si nécessaire.",
-            "Goûter et ajuster la douceur si nécessaire en ajoutant plus de sirop d'érable.",
+            "Couper les avocats en deux, retirer les noyaux et pr\u00e9lever la chair dans un robot culinaire ou un mixeur.",
+            "Ajouter la poudre de cacao, le sirop d'\u00e9rable, le lait de coco, l'extrait de vanille et le sel \u00e0 l'avocat.",
+            "Mixer jusqu'\u00e0 obtenir une consistance parfaitement lisse, en s'arr\u00eatant pour racler les bords si n\u00e9cessaire.",
+            "Go\u00fbter et ajuster la douceur si n\u00e9cessaire en ajoutant plus de sirop d'\u00e9rable.",
             "Verser la mousse dans des coupes de service.",
-            "Réfrigérer pendant au moins 2 heures pour permettre à la mousse de prendre et aux saveurs de se développer.",
-            "Avant de servir, garnir de pépites ou de copeaux de chocolat noir si désiré.",
-            "Servir frais. La mousse se conservera au réfrigérateur jusqu'à 2 jours."
+            "R\u00e9frig\u00e9rer pendant au moins 2 heures pour permettre \u00e0 la mousse de prendre et aux saveurs de se d\u00e9velopper.",
+            "Avant de servir, garnir de p\u00e9pites ou de copeaux de chocolat noir si d\u00e9sir\u00e9.",
+            "Servir frais. La mousse se conservera au r\u00e9frig\u00e9rateur jusqu'\u00e0 2 jours."
         ],
         "timers": [
             0,
@@ -981,7 +988,7 @@
             0,
             0
         ],
-        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Mi75rGhxZJ55vlGIBrPD7mv0IarK4BmrmQ&s",
+        "imageURL": "https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcS4Mi75rGhxZJ55vlGIBrPD7mv0IarK4BmrmQ&s",
         "originalURL": "",
         "likers": [],
         "commentaire": []
@@ -1027,7 +1034,7 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/4 teaspoon",
+                "quantity": "1\/4 teaspoon",
                 "name": "cayenne pepper",
                 "type": "Condiments"
             },
@@ -1042,7 +1049,7 @@
                 "type": "Dairy"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "feta cheese, crumbled",
                 "type": "Dairy"
             },
@@ -1059,64 +1066,64 @@
         ],
         "ingredientsFR": [
             {
-                "quantity": "2 cuillères à soupe",
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
                 "name": "huile d'olive",
                 "type": "Condiments"
             },
             {
                 "quantity": "1",
-                "name": "oignon, coupé en dés",
-                "type": "Légumes"
+                "name": "oignon, coup\u00e9 en d\u00e9s",
+                "type": "L\u00e9gumes"
             },
             {
                 "quantity": "1",
-                "name": "poivron rouge, coupé en dés",
-                "type": "Légumes"
+                "name": "poivron rouge, coup\u00e9 en d\u00e9s",
+                "type": "L\u00e9gumes"
             },
             {
                 "quantity": "4 gousses",
-                "name": "d'ail, émincées",
-                "type": "Légumes"
+                "name": "d'ail, \u00e9minc\u00e9es",
+                "type": "L\u00e9gumes"
             },
             {
-                "quantity": "2 cuillères à café",
+                "quantity": "2 cuill\u00e8res \u00e0 caf\u00e9",
                 "name": "paprika",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "1 cuillère à café",
+                "quantity": "1 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "cumin",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "1/4 cuillère à café",
+                "quantity": "1\/4 cuill\u00e8re \u00e0 caf\u00e9",
                 "name": "piment de Cayenne",
-                "type": "Épices"
+                "type": "\u00c9pices"
             },
             {
-                "quantity": "1 boîte (800g)",
-                "name": "tomates concassées",
+                "quantity": "1 bo\u00eete (800g)",
+                "name": "tomates concass\u00e9es",
                 "type": "Conserves"
             },
             {
                 "quantity": "6",
-                "name": "œufs",
+                "name": "\u0153ufs",
                 "type": "Produits laitiers"
             },
             {
-                "quantity": "1/2 tasse",
-                "name": "feta émiettée",
+                "quantity": "1\/2 tasse",
+                "name": "feta \u00e9miett\u00e9e",
                 "type": "Produits laitiers"
             },
             {
-                "quantity": "2 cuillères à soupe",
-                "name": "persil frais, haché",
+                "quantity": "2 cuill\u00e8res \u00e0 soupe",
+                "name": "persil frais, hach\u00e9",
                 "type": "Herbes"
             },
             {
                 "quantity": "1",
-                "name": "sel et poivre au goût",
-                "type": "Épices"
+                "name": "sel et poivre au go\u00fbt",
+                "type": "\u00c9pices"
             }
         ],
         "steps": [
@@ -1133,17 +1140,17 @@
             "Serve directly from the skillet with crusty bread for dipping."
         ],
         "stepsFR": [
-            "Chauffer l'huile d'olive dans une grande poêle profonde à feu moyen.",
-            "Ajouter l'oignon et le poivron. Cuire jusqu'à ce qu'ils soient ramollis, environ 5 minutes.",
-            "Ajouter l'ail et cuire encore une minute jusqu'à ce qu'il dégage son parfum.",
-            "Incorporer le paprika, le cumin et le piment de Cayenne et cuire pendant 30 secondes pour torréfier les épices.",
-            "Verser les tomates concassées avec leur jus. Assaisonner de sel et de poivre.",
-            "Laisser mijoter pendant 10 minutes, jusqu'à ce que la sauce ait légèrement épaissi.",
-            "À l'aide d'une cuillère, faire 6 renfoncements dans la sauce pour les œufs.",
-            "Casser un œuf dans chaque renfoncement.",
-            "Couvrir la poêle et cuire pendant 5-8 minutes, jusqu'à ce que les blancs d'œufs soient pris mais que les jaunes soient encore coulants.",
-            "Saupoudrer de feta émiettée et de persil haché sur le dessus.",
-            "Servir directement de la poêle avec du pain croustillant pour tremper."
+            "Chauffer l'huile d'olive dans une grande po\u00eale profonde \u00e0 feu moyen.",
+            "Ajouter l'oignon et le poivron. Cuire jusqu'\u00e0 ce qu'ils soient ramollis, environ 5 minutes.",
+            "Ajouter l'ail et cuire encore une minute jusqu'\u00e0 ce qu'il d\u00e9gage son parfum.",
+            "Incorporer le paprika, le cumin et le piment de Cayenne et cuire pendant 30 secondes pour torr\u00e9fier les \u00e9pices.",
+            "Verser les tomates concass\u00e9es avec leur jus. Assaisonner de sel et de poivre.",
+            "Laisser mijoter pendant 10 minutes, jusqu'\u00e0 ce que la sauce ait l\u00e9g\u00e8rement \u00e9paissi.",
+            "\u00c0 l'aide d'une cuill\u00e8re, faire 6 renfoncements dans la sauce pour les \u0153ufs.",
+            "Casser un \u0153uf dans chaque renfoncement.",
+            "Couvrir la po\u00eale et cuire pendant 5-8 minutes, jusqu'\u00e0 ce que les blancs d'\u0153ufs soient pris mais que les jaunes soient encore coulants.",
+            "Saupoudrer de feta \u00e9miett\u00e9e et de persil hach\u00e9 sur le dessus.",
+            "Servir directement de la po\u00eale avec du pain croustillant pour tremper."
         ],
         "timers": [
             0,
@@ -1158,7 +1165,7 @@
             0,
             0
         ],
-        "imageURL": "https://www.delscookingtwist.com/wp-content/uploads/2021/03/Traditional-Shakshuka-With-Feta-Cheese_1.jpg",
+        "imageURL": "https:\/\/www.delscookingtwist.com\/wp-content\/uploads\/2021\/03\/Traditional-Shakshuka-With-Feta-Cheese_1.jpg",
         "originalURL": "",
         "likers": [],
         "commentaire": []

@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
         'user' => $currentUser,
         'text' => htmlspecialchars($_POST['comment']),
         'image' => isset($_FILES['commentImage']) ? $_FILES['commentImage']['name'] : null,
-        'likes' => 0,
+        'likers' => [],
         'timestamp' => time() // Timestamp de la création du commentaire
     ];
     
@@ -195,30 +195,6 @@ foreach ($comments as $comment):
 endforeach;
 ?>
 
-<script>
-    // Code JavaScript pour gérer le like des commentaires
-    document.querySelectorAll('.like-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            let commentId = this.getAttribute('data-comment');
-            
-            fetch('like_comment.php', {
-                method: 'POST',
-                body: JSON.stringify({ commentId: commentId }),
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    let likeCount = parseInt(this.innerText.split(' ')[1]);
-                    this.innerText = `❤ ${likeCount + 1}`;
-                }
-            })
-            .catch(error => console.error('Erreur:', error));
-        });
-    });
-</script>
 
 <!-- Bouton retour -->
 <a href="javascript:history.back()" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #555; color: white; text-decoration: none; border-radius: 5px;">Retour</a>
