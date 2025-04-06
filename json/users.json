@@ -52,5 +52,53 @@
         "posts": [],
         "likes": [],
         "recettes": []
+    },
+    {
+        "nom": "al",
+        "prenom": "ma",
+        "username": "almad",
+        "password": "Almahdi7@",
+        "mail": "mhdi@gmail.com",
+        "role": [
+            "cuisinier"
+        ],
+        "posts": [
+            "comment_67f2b64cd2a88",
+            "comment_67f2b79bcf7b5",
+            "comment_67f2b8848e6a4",
+            "comment_67f2b89881d14"
+        ],
+        "likes": [
+            "Roti \u00e0 la cocotte",
+            "La pizza des grands soirs"
+        ],
+        "recettes": []
+    },
+    {
+        "nom": "blabla",
+        "prenom": "blabla",
+        "username": "blabla",
+        "password": "Blabla25@",
+        "mail": "blabla@gmail.com",
+        "role": [
+            "cuisinier",
+            "askchef"
+        ],
+        "posts": [],
+        "likes": [],
+        "recettes": []
+    },
+    {
+        "nom": "cuisi",
+        "prenom": "cuisi",
+        "username": "cuisi",
+        "password": "Cuisinier25@",
+        "mail": "cuisi@gmail.com",
+        "role": [
+            "cuisinier"
+        ],
+        "posts": [],
+        "likes": [],
+        "recettes": []
     }
 ]
