@@ -97,7 +97,8 @@
         "password": "Cuisinier25@",
         "mail": "cuisi@gmail.com",
         "role": [
-            "cuisinier"
+            "cuisinier",
+            "traducteur"
         ],
         "posts": [],
         "likes": [],
