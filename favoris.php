@@ -57,6 +57,9 @@ foreach ($recipes as $recipe) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/like.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
     <header>

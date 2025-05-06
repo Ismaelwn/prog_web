@@ -101,5 +101,21 @@
         "posts": [],
         "likes": [],
         "recettes": []
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "mxx",
+        "password": "Matuidi11.",
+        "mail": "izoonefc@gmail.com",
+        "role": [
+            "cuisinier",
+            "askchef"
+        ],
+        "posts": [],
+        "likes": [
+            "Crock Pot Roast"
+        ],
+        "recettes": []
     }
 ]

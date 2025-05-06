@@ -33,6 +33,8 @@ if ($isConnected) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= ($_SESSION['lang'] == 'fr') ? 'À propos - Projet Gestion de Recettes' : 'About - Recipe Management Project' ?></title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
@@ -41,8 +43,8 @@ if ($isConnected) {
             <li><a href="main.php">Re7</a></li>
             <li><a href="apropos.php"><?= ($_SESSION['lang'] == 'fr') ? 'À propos' : 'About' ?></a></li>
             <li><a href="favoris.php"><?= ($_SESSION['lang'] == 'fr') ? 'Favoris' : 'Favorites' ?></a></li>
-            <li><button>Langue</button></li>
-
+            
+            
             <!-- Formulaire de sélection de langue -->
             <form method="POST" action="apropos.php">
                 <select name="lang" onchange="this.form.submit()">
@@ -110,7 +112,7 @@ if ($isConnected) {
 </div>
 
 <footer>
-    <?= ($_SESSION['lang'] == 'fr') ? 'Réalisé par [Votre Nom] dans le cadre du projet de Programmation Web 2024-2025, Université Paris-Saclay.' : 'Created by [Your Name] as part of the Web Programming project 2024-2025, Paris-Saclay University.' ?>
+    <?= ($_SESSION['lang'] == 'fr') ? 'Réalisé par IW et MA dans le cadre du projet de Programmation Web 2024-2025, Université Paris-Saclay.' : 'Created by IW et MA as part of the Web Programming project 2024-2025, Paris-Saclay University.' ?>
 </footer>
 
 </body>

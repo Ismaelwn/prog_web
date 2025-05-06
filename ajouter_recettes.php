@@ -7,7 +7,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['role'])) {
 }
 
 $roles = (array)$_SESSION['role'];
-if ( !in_array('chef', $roles)) {
+if (!in_array('chef', $roles)) {
     header("Location: main.php");
     exit;
 }
@@ -17,8 +17,12 @@ $recipes = file_exists($recipesFile) ? json_decode(file_get_contents($recipesFil
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nameFR = trim($_POST['nameFR']);
+    $name = trim($_POST['name']);
+    $ingredientsFR = array_filter(array_map('trim', explode("\n", $_POST['ingredientsFR'])));
     $ingredients = array_filter(array_map('trim', explode("\n", $_POST['ingredients'])));
-    $instructions = array_filter(array_map('trim', explode("\n", $_POST['instructions'])));
+    $stepsFR = array_filter(array_map('trim', explode("\n", $_POST['stepsFR'])));
+    $steps = array_filter(array_map('trim', explode("\n", $_POST['steps'])));
+    $timers = array_map('trim', explode(",", $_POST['timers']));
     $imageURL = trim($_POST['imageURL']);
     $allergenes = array_filter(array_map('trim', explode(',', $_POST['allergenes'])));
 
@@ -32,16 +36,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($exists) {
         $error = "Une recette avec ce nom existe déjà.";
-    } elseif ($nameFR && $ingredients && $instructions) {
+    } elseif ($nameFR && $name && $ingredients && $steps) {
         $newRecipe = [
             "nameFR" => $nameFR,
+            "name" => $name,
+            "ingredientsFR" => $ingredientsFR,
             "ingredients" => $ingredients,
-            "instructions" => $instructions,
+            "stepsFR" => $stepsFR,
+            "steps" => $steps,
+            "timers" => $timers,
             "imageURL" => $imageURL,
             "allergenes" => $allergenes,
             "Author" => $_SESSION['username'],
             "validated" => in_array("chef", $roles),
             "likers" => [],
+            "commentaire" => [],
         ];
 
         $recipes[] = $newRecipe;
@@ -69,19 +78,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="post">
-        <label for="nameFR">Nom de la recette :</label><br>
+        <label for="nameFR">Nom de la recette (Français) :</label><br>
         <input type="text" name="nameFR" required><br><br>
 
-        <label for="ingredients">Ingrédients (1 par ligne) :</label><br>
+        <label for="name">Nom de la recette (Anglais) :</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label for="ingredientsFR">Ingrédients (Français) :</label><br>
+        <textarea name="ingredientsFR" rows="5" cols="50" required></textarea><br><br>
+
+        <label for="ingredients">Ingrédients (Anglais) :</label><br>
         <textarea name="ingredients" rows="5" cols="50" required></textarea><br><br>
 
-        <label for="instructions">Instructions (1 par ligne) :</label><br>
-        <textarea name="instructions" rows="5" cols="50" required></textarea><br><br>
+        <label for="stepsFR">Étapes (Français) :</label><br>
+        <textarea name="stepsFR" rows="5" cols="50" required></textarea><br><br>
+
+        <label for="steps">Étapes (Anglais) :</label><br>
+        <textarea name="steps" rows="5" cols="50" required></textarea><br><br>
+
+        <label for="timers">Timers (en secondes, séparés par des virgules) :</label><br>
+        <input type="text" name="timers" placeholder="ex : 0, 5, 1, 1, 0, 10" required><br><br>
 
         <label for="imageURL">URL de l'image :</label><br>
-        <input type="text" name="imageURL"><br><br>
+        <input type="text" name="imageURL" required><br><br>
 
-        <label for="allergenes">Allergènes (séparés par virgule) :</label><br>
+        <label for="allergenes">Allergènes (séparés par des virgules) :</label><br>
         <input type="text" name="allergenes" placeholder="ex : gluten, œufs, lait"><br><br>
 
         <button type="submit">Ajouter la recette</button>

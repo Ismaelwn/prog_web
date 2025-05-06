@@ -1,0 +1,121 @@
+/* Reset de styles pour garantir une base propre */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4; /* Fond clair pour une lisibilité optimale */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Titres et boutons avec positionnement */
+#h2_c, #h2_l {
+    text-align: center;
+    margin-top: 0;
+}
+
+#bmainc, #bmainl {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    color: white;
+}
+
+#loginform, #signinform {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour donner de la profondeur */
+    text-align: center;
+    width: 90%;
+    max-width: 350px;
+}
+
+#loginform {
+    height: 300px;
+}
+
+#signinform {
+    height: 480px;
+    margin-top: 40px;
+}
+
+/* Mise en forme des champs de formulaire */
+#form_connection label, #form_creer label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#form_connection input, #form_creer input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 90%;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Liens et textes interactifs */
+a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer centré */
+footer {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    color: #666;
+}
+
+/* Liens spécifiques */
+#createl, #createc {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 5px;
+    text-align: center;
+}
+
+#createl:hover, #createc:hover {
+    background-color: #007bff;
+    color: white;
+}
