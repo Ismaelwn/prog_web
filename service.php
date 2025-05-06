@@ -40,7 +40,9 @@ if (isset($_GET["nom"]) && isset($_GET["prenom"]) && isset($_GET["username"]) &&
         "role" => $roleList,  // Stocké sous forme de liste avec "cuisinier" toujours inclus
         "posts"  => [],
         "likes"  =>  [],
-        "recettes"  => []
+        "recettes"  => [],
+        "comments_likes" => [],
+        "posts_likes" => []
     ];
 
     // Ajouter le nouvel utilisateur à la liste existante

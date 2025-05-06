@@ -10,7 +10,6 @@ if ($isConnected) {
     $users = json_decode($usersJson, true);
     $userPosts = [];
 
-    // Trouver les posts de l'utilisateur actuel
     foreach ($users as $user) {
         if ($user['username'] === $currentUser) {
             $userPosts = isset($user['posts']) ? $user['posts'] : [];
@@ -36,26 +35,21 @@ if (!$recipe) {
     die("Recette non trouvée.");
 }
 
-// Vérification de la langue de l'utilisateur (par défaut en français)
-$lang = isset($_GET['lang']) ? $_GET['lang'] : 'fr'; // Par défaut, on affiche la version française
-
-// Gestion des commentaires
-$commentsFile = 'json/posts.json'; 
+$lang = isset($_GET['lang']) ? $_GET['lang'] : 'fr';
+$commentsFile = 'json/comments.json'; 
 $comments = json_decode(file_get_contents($commentsFile), true) ?? [];
 
-// Ajouter un nouveau commentaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
     $newComment = [
-        'id' => uniqid('comment_'),  // Génère un ID unique pour le commentaire
-        'recipeId' => $recipe['nameFR'], // L'ID de la recette à laquelle appartient le commentaire
+        'id' => uniqid('comment_'),
+        'recipeId' => $recipe['nameFR'],
         'user' => $currentUser,
         'text' => htmlspecialchars($_POST['comment']),
         'image' => isset($_FILES['commentImage']) ? $_FILES['commentImage']['name'] : null,
-        'likers' => [],
-        'timestamp' => time() // Timestamp de la création du commentaire
+        'likes' => [],
+        'timestamp' => time()
     ];
-    
-    // Sauvegarder l'image si elle est téléchargée
+
     if ($newComment['image']) {
         $imagePath = 'img/uploads/' . basename($newComment['image']);
         move_uploaded_file($_FILES['commentImage']['tmp_name'], $imagePath);
@@ -64,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
     $comments[] = $newComment;
     file_put_contents($commentsFile, json_encode($comments, JSON_PRETTY_PRINT));
 
-    // Ajouter l'ID du commentaire dans les posts de l'utilisateur
     foreach ($users as &$user) {
         if ($user['username'] === $currentUser) {
             $user['posts'][] = $newComment['id'];
@@ -74,22 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
     file_put_contents('json/users.json', json_encode($users, JSON_PRETTY_PRINT));
 }
 
-// Suppression d'un commentaire
 if (isset($_POST['delete_comment'])) {
     $commentIdToDelete = $_POST['delete_comment'];
 
-    // Supprimer le commentaire correspondant à l'ID
     $comments = array_filter($comments, function ($comment) use ($commentIdToDelete) {
         return $comment['id'] !== $commentIdToDelete;
     });
 
-    // Réindexer l'array
     $comments = array_values($comments);
-
-    // Sauvegarder les commentaires mis à jour dans le fichier JSON
     file_put_contents($commentsFile, json_encode($comments, JSON_PRETTY_PRINT));
 
-    // Supprimer l'ID du commentaire des posts de l'utilisateur
     foreach ($users as &$user) {
         if ($user['username'] === $currentUser) {
             $user['posts'] = array_filter($user['posts'], function ($postId) use ($commentIdToDelete) {
@@ -99,12 +86,9 @@ if (isset($_POST['delete_comment'])) {
         }
     }
     file_put_contents('json/users.json', json_encode($users, JSON_PRETTY_PRINT));
-
-    // Rediriger pour éviter un double envoi de formulaire
     header('Location: ' . $_SERVER['REQUEST_URI']);
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -153,7 +137,6 @@ if (isset($_POST['delete_comment'])) {
     <p>Image non disponible</p>
 <?php endif; ?>
 
-<!-- Formulaire pour ajouter un commentaire -->
 <?php if ($isConnected): ?>
     <h2>Ajouter un commentaire</h2>
     <form method="POST" enctype="multipart/form-data">
@@ -165,24 +148,32 @@ if (isset($_POST['delete_comment'])) {
     <p>Vous devez être connecté pour ajouter un commentaire.</p>
 <?php endif; ?>
 
-<!-- Affichage des commentaires -->
 <h2>Commentaires</h2>
 <?php
 foreach ($comments as $comment):
     if ($comment['recipeId'] === $recipe['nameFR']):
-        // Formatage de la date et de l'heure
         $formattedDate = date('d/m/Y à H:i', $comment['timestamp']);
 ?>
     <div class="comment">
-    <p><strong>@<?= htmlspecialchars($comment['user']) ?></strong></p>
-    <p><?= $formattedDate ?> :</p>
-    <p><?= htmlspecialchars($comment['text']) ?></p>
+        <p><strong>@<?= htmlspecialchars($comment['user']) ?></strong></p>
+        <p><?= $formattedDate ?> :</p>
+        <p><?= htmlspecialchars($comment['text']) ?></p>
         <?php if ($comment['image']): ?>
             <img src="img/uploads/<?= htmlspecialchars($comment['image']) ?>" alt="Image du commentaire" style="max-width: 200px;">
         <?php endif; ?>
-        <button class="like-btn" data-comment="<?= htmlspecialchars($comment['id']) ?>">❤ <?= $comment['likes'] ?></button>
-        
-        <!-- Bouton Supprimer, visible seulement pour l'utilisateur qui a écrit le commentaire -->
+
+        <?php
+        $likeCount = isset($comment['likes']) && is_array($comment['likes']) ? count($comment['likes']) : 0;
+        $isLiked = $isConnected && in_array($currentUser, $comment['likes'] ?? []);
+        ?>
+        <button 
+            class="like-btn" 
+            data-comment-id="<?= htmlspecialchars($comment['id']) ?>" 
+            data-liked="<?= $isLiked ? 'true' : 'false' ?>" 
+            data-count="<?= $likeCount ?>">
+            <?= $isLiked ? '❤️' : '♡' ?> <?= $likeCount ?>
+        </button>
+
         <?php if ($comment['user'] === $currentUser): ?>
             <form method="POST" style="display: inline;">
                 <input type="hidden" name="delete_comment" value="<?= htmlspecialchars($comment['id']) ?>">
@@ -195,8 +186,6 @@ foreach ($comments as $comment):
 endforeach;
 ?>
 
-
-<!-- Bouton retour -->
 <a href="javascript:history.back()" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #555; color: white; text-decoration: none; border-radius: 5px;">Retour</a>
 
 </body>
