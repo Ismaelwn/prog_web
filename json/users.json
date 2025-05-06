@@ -117,5 +117,38 @@
             "Crock Pot Roast"
         ],
         "recettes": []
+    },
+    {
+        "username": "ismael.wane",
+        "password": "$2y$10$JAseiMJNMYILY.kTTBNVDeIJZ9.qsGHWqhTeOp6mP7SDCt17ASQ82",
+        "role": [
+            "cuisinier"
+        ],
+        "email": "ismael.wane@universite-paris-saclay.fr",
+        "prenom": null,
+        "nom": null
+    },
+    {
+        "username": "mxx",
+        "password": "$2y$10$1P4RpbxI2xjiRtQwnDt9d.BoMfNZX1wurWP7u6k.JrmBe03ac6EUO",
+        "role": [
+            "cuisinier"
+        ],
+        "email": "x@l.com",
+        "prenom": null,
+        "nom": null
+    },
+    {
+        "nom": "Wane",
+        "prenom": "Isma\u00ebl",
+        "username": "ismael.wane_",
+        "password": "Matuidi11.",
+        "mail": "izoonefc2@gmail.com",
+        "role": [
+            "cuisinier"
+        ],
+        "posts": [],
+        "likes": [],
+        "recettes": []
     }
 ]

@@ -65,8 +65,6 @@ if (isset($_POST['lang'])) {
             <label for="role"><?= $_SESSION['lang'] == 'fr' ? 'Rôle' : 'Role' ?></label>
             <select name="Role" required>
                 <option value="cuisinier"><?= $_SESSION['lang'] == 'fr' ? 'Cuisinier' : 'Cook' ?></option>
-                <option value="askchef"><?= $_SESSION['lang'] == 'fr' ? 'DemandeChef' : 'ChefRequest' ?></option>
-                <option value="asktraducteur"><?= $_SESSION['lang'] == 'fr' ? 'DemandeTraducteur' : 'TranslatorRequest' ?></option>
             </select>
             <br>
             <button type="submit" id="submit_register"><?= $_SESSION['lang'] == 'fr' ? 'Créer le compte' : 'Create Account' ?></button>
