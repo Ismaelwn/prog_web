@@ -1,6 +1,16 @@
 <?php
 session_start();
 
+// Vérifier si une langue a été sélectionnée
+if (isset($_POST['lang'])) {
+    $_SESSION['lang'] = $_POST['lang'];  // Enregistrer la langue choisie dans la session
+} else {
+    // Si la langue n'est pas définie, utiliser la langue par défaut
+    if (!isset($_SESSION['lang'])) {
+        $_SESSION['lang'] = 'fr';  // Langue par défaut : français
+    }
+}
+
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION["username"])) {
     // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
@@ -10,15 +20,11 @@ if (!isset($_SESSION["username"])) {
 
 $isConnected = isset($_SESSION["username"]);
 $currentUser = $isConnected ? $_SESSION["username"] : '';
+$userLikes = [];
 
 // Charger les utilisateurs pour vérifier les likes actuels
-$users = [];
 if ($isConnected) {
-    $usersJson = file_get_contents('json/users.json');
-    $users = json_decode($usersJson, true);
-    $userLikes = [];
-    
-    // Trouver les likes de l'utilisateur actuel
+    $users = json_decode(file_get_contents('json/users.json'), true);
     foreach ($users as $user) {
         if ($user['username'] === $currentUser) {
             $userLikes = isset($user['likes']) ? $user['likes'] : [];
@@ -46,7 +52,7 @@ foreach ($recipes as $recipe) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favoris - Re7</title>
+    <title><?= ($_SESSION['lang'] == 'fr') ? 'Favoris - Re7' : 'Favorites - Re7' ?></title>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
@@ -57,33 +63,38 @@ foreach ($recipes as $recipe) {
         <nav>
             <ul>
                 <li><a href="main.php">Re7</a></li>
-                <li><a href="#">Rechercher</a></li>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Contact</a></li>  
-                <li><a href="favoris.php">Favoris</a></li>  
-                <li><button>Langue</button></li>
+                <li><a href="apropos.php"><?= ($_SESSION['lang'] == 'fr') ? 'À propos' : 'About' ?></a></li>
+                <li><a href="favoris.php"><?= ($_SESSION['lang'] == 'fr') ? 'Favoris' : 'Favorites' ?></a></li>  
+                
+
+                <!-- Formulaire de sélection de langue -->
+                <form method="POST" action="favoris.php">
+                    <select name="lang" onchange="this.form.submit()">
+                        <option value="fr" <?= $_SESSION['lang'] == 'fr' ? 'selected' : '' ?>>Français</option>
+                        <option value="en" <?= $_SESSION['lang'] == 'en' ? 'selected' : '' ?>>English</option>
+                    </select>
+                </form>
 
                 <?php if ($isConnected): ?>
                     <li class="user-menu">
                         <span class="username"><?= htmlspecialchars($_SESSION["username"]) ?> ▼</span>
                         <div class="dropdown-menu">
-                            <a href="account.php">Votre compte</a>
-                            <a href="account.php">Mon profil</a>
-                            <a href="account.php">Support</a>
-                            <a href="logout.php">Se déconnecter</a>
+                            <a href="account.php"><?= ($_SESSION['lang'] == 'fr') ? 'Votre compte' : 'Your Account' ?></a>
+                            <a href="profil.php"><?= ($_SESSION['lang'] == 'fr') ? 'Mon profil' : 'My Profile' ?></a>
+                            <a href="logout.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se déconnecter' : 'Log out' ?></a>
                         </div>
                     </li>
                 <?php else: ?>
-                    <li><a href="create_login.php">Se connecter</a></li>
+                    <li><a href="create_login.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se connecter' : 'Log in' ?></a></li>
                 <?php endif; ?>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Mes recettes favorites</h1>
+        <h1><?= ($_SESSION['lang'] == 'fr') ? 'Mes recettes favorites' : 'My Favorite Recipes' ?></h1>
         <?php if (empty($likedRecipes)): ?>
-            <p>Aucune recette n'est ajoutée à vos favoris.</p>
+            <p><?= ($_SESSION['lang'] == 'fr') ? "Aucune recette n'est ajoutée à vos favoris." : "No recipes added to your favorites." ?></p>
         <?php else: ?>
             <div class="recipes">
                 <?php foreach ($likedRecipes as $recipe): ?>
@@ -91,17 +102,17 @@ foreach ($recipes as $recipe) {
                         <?php if (!empty($recipe['imageURL'])): ?>
                             <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= htmlspecialchars($recipe['nameFR']) ?>">
                         <?php else: ?>
-                            <div class="no-image">Image non disponible</div>
+                            <div class="no-image"><?= ($_SESSION['lang'] == 'fr') ? 'Image non disponible' : 'Image not available' ?></div>
                         <?php endif; ?>
                         <h3><?= htmlspecialchars($recipe['nameFR']) ?></h3>
-                        <p>Auteur : <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
+                        <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Auteur :' : 'Author :' ?></strong> <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
                         <button class="like-btn" 
                                 data-recipe="<?= htmlspecialchars($recipe['nameFR']) ?>"
                                 data-liked="true" 
                                 data-count="<?= isset($recipe['likers']) ? count($recipe['likers']) : 0 ?>">
                             ❤ <?= isset($recipe['likers']) ? count($recipe['likers']) : 0 ?>
                         </button>
-                        <a href="details.php?id=<?= urlencode($recipe['name']) ?>" class="more-btn">+ Plus</a>
+                        <a href="details.php?id=<?= urlencode($recipe['name']) ?>" class="more-btn"><?= ($_SESSION['lang'] == 'fr') ? '+ Plus' : '+ More' ?></a>
                     </div>
                 <?php endforeach; ?>
             </div>

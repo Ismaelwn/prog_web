@@ -1,11 +1,20 @@
 <?php
 session_start();
+
+// Vérifier si une langue a été sélectionnée
+if (isset($_POST['lang'])) {
+    $_SESSION['lang'] = $_POST['lang'];  // Enregistrer la langue choisie dans la session
+} else {
+    // Si la langue n'est pas définie, utiliser la langue par défaut
+    if (!isset($_SESSION['lang'])) {
+        $_SESSION['lang'] = 'fr';  // Langue par défaut : français
+    }
+}
+
 $isConnected = isset($_SESSION["username"]);
 $currentUser = $isConnected ? $_SESSION["username"] : '';
-
-$query = isset($_GET['q']) ? strtolower(trim($_GET['q'])) : '';
-
 $userLikes = [];
+
 if ($isConnected) {
     $users = json_decode(file_get_contents('json/users.json'), true);
     foreach ($users as $user) {
@@ -16,134 +25,132 @@ if ($isConnected) {
     }
 }
 
+$query = isset($_GET['q']) ? strtolower(trim($_GET['q'])) : '';
+
 $recipes = json_decode(file_get_contents('json/recipes.json'), true);
 if (!$recipes) {
     die("Erreur lors du chargement des recettes.");
 }
 
+// Filtrer les recettes en fonction de la langue et du texte de recherche
 $filtered = array_filter($recipes, function ($recipe) use ($query) {
-    $nameFR = strtolower($recipe['nameFR'] ?? '');
-    $nameEN = strtolower($recipe['nameEN'] ?? '');
-    return str_contains($nameFR, $query) || str_contains($nameEN, $query);
+    $name = ($_SESSION['lang'] == 'fr') ? strtolower($recipe['nameFR'] ?? '') : strtolower($recipe['name'] ?? '');
+    return str_contains($name, $query);
 });
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $_SESSION['lang'] == 'fr' ? 'fr' : 'en' ?>">
 <head>
     <meta charset="UTF-8">
-    <title>Résultats de recherche - Re7</title>
+    <title><?= ($_SESSION['lang'] == 'fr') ? 'Résultats de recherche - Re7' : 'Search Results - Re7' ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/like.js"></script>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="main.php">← Retour à l'accueil</a></li>
-            <li><strong>Résultats de recherche</strong></li>
-            <?php if ($isConnected): ?>
-                <li class="user-menu">
-                    <span class="username"><?= htmlspecialchars($currentUser) ?> ▼</span>
-                    <div class="dropdown-menu">
-                        <a href="account.php">Votre compte</a>
-                        <a href="logout.php">Se déconnecter</a>
-                    </div>
-                </li>
-            <?php else: ?>
-                <li><a href="create_login.php">Se connecter</a></li>
-            <?php endif; ?>
+            
+            
+            <!-- Formulaire de sélection de langue -->
+            <form method="POST" action="search_recipes.php">
+                <select name="lang" onchange="this.form.submit()">
+                    <option value="fr" <?= $_SESSION['lang'] == 'fr' ? 'selected' : '' ?>>Français</option>
+                    <option value="en" <?= $_SESSION['lang'] == 'en' ? 'selected' : '' ?>>English</option>
+                </select>
+            </form>
+
         </ul>
     </nav>
 </header>
 
 <main>
-    <h1>Résultats pour : "<?= htmlspecialchars($query) ?>"</h1>
+    <section>
+        <h1><?= ($_SESSION['lang'] == 'fr') ? 'Résultats pour : "' . htmlspecialchars($query) . '"' : 'Results for: "' . htmlspecialchars($query) . '"' ?></h1>
 
-    <div class="recipes" id="recipes-container">
-        <?php if (empty($filtered)): ?>
-            <p>Aucune recette trouvée.</p>
-        <?php else: ?>
-            <?php foreach ($filtered as $recipe): ?>
-                <?php
-                    $recipeNameFR = htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu');
-                    $isLiked = in_array($recipeNameFR, $userLikes);
-                    $likeCount = isset($recipe['likers']) ? count($recipe['likers']) : 0;
+        <div class="recipes" id="recipes-container">
+            <?php if (empty($filtered)): ?>
+                <p><?= ($_SESSION['lang'] == 'fr') ? "Aucune recette trouvée." : "No recipes found." ?></p>
+            <?php else: ?>
+                <?php foreach ($filtered as $recipe): ?>
+                    <?php
+                        $recipeName = ($_SESSION['lang'] == 'fr') ? htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu') : htmlspecialchars($recipe['name'] ?? 'Unknown name');
+                        $isLiked = in_array($recipeName, $userLikes);
+                        $likeCount = isset($recipe['likers']) ? count($recipe['likers']) : 0;
 
-                    // Ingrédients
-                    $ingredientsHTML = '';
-                    if (isset($recipe['ingredients'])) {
-                        if (is_array($recipe['ingredients'])) {
-                            $items = [];
-                            foreach ($recipe['ingredients'] as $ing) {
-                                if (is_array($ing) && isset($ing['name'])) {
-                                    $desc = htmlspecialchars($ing['quantity'] ?? '') . ' ' . htmlspecialchars($ing['name']);
-                                    $items[] = trim($desc);
-                                } elseif (is_string($ing)) {
-                                    $items[] = htmlspecialchars($ing);
+                        // Ingrédients
+                        $ingredientsHTML = '';
+                        if (isset($recipe['ingredients'])) {
+                            if (is_array($recipe['ingredients'])) {
+                                $items = [];
+                                foreach ($recipe['ingredients'] as $ing) {
+                                    if (is_array($ing) && isset($ing['name'])) {
+                                        $desc = htmlspecialchars($ing['quantity'] ?? '') . ' ' . htmlspecialchars($ing['name']);
+                                        $items[] = trim($desc);
+                                    } elseif (is_string($ing)) {
+                                        $items[] = htmlspecialchars($ing);
+                                    }
                                 }
+                                $ingredientsHTML = implode('<br>', $items);
+                            } else {
+                                $ingredientsHTML = nl2br(htmlspecialchars($recipe['ingredients']));
                             }
-                            $ingredientsHTML = implode('<br>', $items);
-                        } else {
-                            $ingredientsHTML = nl2br(htmlspecialchars($recipe['ingredients']));
                         }
-                    }
 
-                    // Instructions
-                    $instructionsHTML = '';
-                    if (isset($recipe['instructions'])) {
-                        if (is_array($recipe['instructions'])) {
-                            $instructionsHTML = implode('<br>', array_map('htmlspecialchars', $recipe['instructions']));
-                        } else {
-                            $instructionsHTML = nl2br(htmlspecialchars($recipe['instructions']));
+                        // Instructions
+                        $instructionsHTML = '';
+                        if (isset($recipe['instructions'])) {
+                            if (is_array($recipe['instructions'])) {
+                                $instructionsHTML = implode('<br>', array_map('htmlspecialchars', $recipe['instructions']));
+                            } else {
+                                $instructionsHTML = nl2br(htmlspecialchars($recipe['instructions']));
+                            }
                         }
-                    }
 
-                    // Allergènes
-                    $allergenes = '';
-                    if (!empty($recipe['allergenes'])) {
-                        $allergenes = is_array($recipe['allergenes'])
-                            ? implode(', ', array_map('htmlspecialchars', $recipe['allergenes']))
-                            : htmlspecialchars($recipe['allergenes']);
-                    }
-                ?>
-                <div class="recipe-card">
-                    <?php if (!empty($recipe['imageURL'])): ?>
-                        <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= $recipeNameFR ?>">
-                    <?php else: ?>
-                        <div class="no-image">Image non disponible</div>
-                    <?php endif; ?>
+                        // Allergènes
+                        $allergenes = '';
+                        if (!empty($recipe['allergenes'])) {
+                            $allergenes = is_array($recipe['allergenes'])
+                                ? implode(', ', array_map('htmlspecialchars', $recipe['allergenes']))
+                                : htmlspecialchars($recipe['allergenes']);
+                        }
+                    ?>
+                    <div class="recipe-card">
+                        <?php if (!empty($recipe['imageURL'])): ?>
+                            <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= $recipeName ?>">
+                        <?php else: ?>
+                            <div class="no-image"><?= ($_SESSION['lang'] == 'fr') ? 'Image non disponible' : 'Image not available' ?></div>
+                        <?php endif; ?>
 
-                    <h3><?= $recipeNameFR ?></h3>
-                    <p><strong>Auteur :</strong> <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
-                    <?php if ($ingredientsHTML): ?>
-                        <p><strong>Ingrédients :</strong><br><?= $ingredientsHTML ?></p>
-                    <?php endif; ?>
-                    <?php if ($instructionsHTML): ?>
-                        <p><strong>Instructions :</strong><br><?= $instructionsHTML ?></p>
-                    <?php endif; ?>
-                    <?php if ($allergenes): ?>
-                        <p><strong>Allergènes :</strong><br><?= $allergenes ?></p>
-                    <?php endif; ?>
+                        <h3><?= $recipeName ?></h3>
+                        <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Auteur :' : 'Author :' ?></strong> <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
+                        <?php if ($ingredientsHTML): ?>
+                            <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Ingrédients :' : 'Ingredients :' ?></strong><br><?= $ingredientsHTML ?></p>
+                        <?php endif; ?>
+                        <?php if ($instructionsHTML): ?>
+                            <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Instructions :' : 'Instructions :' ?></strong><br><?= $instructionsHTML ?></p>
+                        <?php endif; ?>
+                        <?php if ($allergenes): ?>
+                            <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Allergènes :' : 'Allergens :' ?></strong><br><?= $allergenes ?></p>
+                        <?php endif; ?>
 
-                    <button class="like-btn" 
-                            data-recipe="<?= $recipeNameFR ?>"
-                            data-liked="<?= $isLiked ? 'true' : 'false' ?>"
-                            data-count="<?= $likeCount ?>">
-                        <?= $isLiked ? '❤' : '♡' ?> <?= $likeCount ?>
-                    </button>
-                    <a href="details.php?id=<?= urlencode($recipeNameFR) ?>" class="more-btn">+ Plus</a>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+                        <button class="like-btn" 
+                                data-recipe="<?= $recipeName ?>"
+                                data-liked="<?= $isLiked ? 'true' : 'false' ?>"
+                                data-count="<?= $likeCount ?>">
+                            <?= $isLiked ? '❤' : '♡' ?> <?= $likeCount ?>
+                        </button>
+                        <a href="details.php?id=<?= urlencode($recipeName) ?>" class="more-btn"><?= ($_SESSION['lang'] == 'fr') ? '+ Plus' : '+ More' ?></a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </section>
 </main>
 
-<footer>
-    <p>&copy; 2025 Re7. Tous droits réservés.</p>
-</footer>
+
 
 <script>
     $(document).ready(function () {
@@ -152,5 +159,6 @@ $filtered = array_filter($recipes, function ($recipe) use ($query) {
         }
     });
 </script>
+
 </body>
 </html>

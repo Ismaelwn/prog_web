@@ -83,8 +83,8 @@
         "originalURL": "http:\/\/www.food.com\/recipe\/to-die-for-crock-pot-roast-27208",
         "likers": [
             "moh_",
-            "ismael_",
-            "almad"
+            "almad",
+            "ismael_"
         ],
         "commentaire": []
     },
@@ -1172,28 +1172,5 @@
         "originalURL": "",
         "likers": [],
         "commentaire": []
-    },
-    {
-        "nameFR": "test_recette",
-        "ingredients": "riz , pates , sauce",
-        "instructions": "cuire tout",
-        "imageURL": "",
-        "Author": "almad",
-        "validated": false,
-        "likers": []
-    },
-    {
-        "nameFR": "blabla",
-        "ingredients": [
-            "blabla"
-        ],
-        "instructions": [
-            "bklabla"
-        ],
-        "imageURL": "",
-        "allergenes": [],
-        "Author": "blabla",
-        "validated": false,
-        "likers": []
     }
-]
+    ]

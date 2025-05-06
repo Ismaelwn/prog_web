@@ -1,5 +1,16 @@
 <?php
 session_start();
+
+// Vérifier si une langue a été sélectionnée
+if (isset($_POST['lang'])) {
+    $_SESSION['lang'] = $_POST['lang'];  // Enregistrer la langue choisie dans la session
+} else {
+    // Si la langue n'est pas définie, utiliser la langue par défaut
+    if (!isset($_SESSION['lang'])) {
+        $_SESSION['lang'] = 'fr';  // Langue par défaut : français
+    }
+}
+
 $isConnected = isset($_SESSION["username"]);
 $currentUser = $isConnected ? $_SESSION["username"] : '';
 $currentRoles = [];
@@ -25,9 +36,8 @@ if (!$recipes) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Re7 - Recettes</title>
+    <title><?= ($_SESSION['lang'] == 'fr') ? 'Re7 - Recettes' : 'Re7 - Recipes' ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/like.js"></script>
@@ -38,99 +48,78 @@ if (!$recipes) {
         <ul>
             <li><a href="#">Re7</a></li>
             <li>
-                <input type="text" id="search-input" placeholder="Rechercher une recette...">
-                <button id="search-btn">Rechercher</button>
+                <input type="text" id="search-input" placeholder="<?= ($_SESSION['lang'] == 'fr') ? 'Rechercher une recette...' : 'Search for a recipe...'; ?>">
+                <button id="search-btn"><?= ($_SESSION['lang'] == 'fr') ? 'Rechercher' : 'Search' ?></button>
             </li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="favoris.php">Favoris</a></li>
-            <li><button>Langue</button></li>
+            <li><a href="apropos.php"><?= ($_SESSION['lang'] == 'fr') ? 'À propos' : 'About' ?></a></li>
+            <li><a href="favoris.php"><?= ($_SESSION['lang'] == 'fr') ? 'Favoris' : 'Favorites' ?></a></li>
+
+            <!-- Formulaire de sélection de langue -->
+            <form method="POST" action="main.php">
+                <select name="lang" onchange="this.form.submit()">
+                    <option value="fr" <?= $_SESSION['lang'] == 'fr' ? 'selected' : '' ?>>Français</option>
+                    <option value="en" <?= $_SESSION['lang'] == 'en' ? 'selected' : '' ?>>English</option>
+                </select>
+            </form>
 
             <?php if ($isConnected): ?>
                 <?php if (in_array('chef', $currentRoles)): ?>
-                    <li><a href="valider_recettes.php">Valider des recettes</a></li>
+                    <li><a href="valider_recettes.php"><?= ($_SESSION['lang'] == 'fr') ? 'Valider des recettes' : 'Validate Recipes' ?></a></li>
                 <?php elseif (in_array('askchef', $currentRoles)): ?>
-                    <li><span>Demande de rôle chef en attente</span></li>
+                    <li><span><?= ($_SESSION['lang'] == 'fr') ? 'Demande de rôle chef en attente' : 'Chef role request pending' ?></span></li>
                 <?php endif; ?>
                 <?php if (in_array('traducteur', $currentRoles)): ?>
-                    <li><a href="traduire_recette.php">Traduire une recette</a></li>
+                    <li><a href="traduire_recette.php"><?= ($_SESSION['lang'] == 'fr') ? 'Traduire une recette' : 'Translate a Recipe' ?></a></li>
                 <?php elseif (in_array('asktraducteur', $currentRoles)): ?>
-                    <li><span>Demande de rôle traducteur en attente</span></li>
+                    <li><span><?= ($_SESSION['lang'] == 'fr') ? 'Demande de rôle traducteur en attente' : 'Translator role request pending' ?></span></li>
                 <?php endif; ?>
                 <?php if (in_array('admin', $currentRoles)): ?>
-                    <li><a href="admin_panel.php">Administration</a></li>
+                    <li><a href="admin_panel.php"><?= ($_SESSION['lang'] == 'fr') ? 'Administration' : 'Admin Panel' ?></a></li>
                 <?php endif; ?>
 
                 <li class="user-menu">
                     <span class="username"><?= htmlspecialchars($_SESSION["username"]) ?> ▼</span>
                     <div class="dropdown-menu">
-                    <a href="account.php">Votre compte</a>
-                    <a href="profil.php">Mon profil</a>
-                    <a href="support.php">Support</a>
-                    <a href="logout.php">Se déconnecter</a>
+                    <a href="account.php"><?= ($_SESSION['lang'] == 'fr') ? 'Votre compte' : 'Your Account' ?></a>
+                    <a href="profil.php"><?= ($_SESSION['lang'] == 'fr') ? 'Mon profil' : 'My Profile' ?></a>
+                    <a href="logout.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se déconnecter' : 'Log out' ?></a>
                 </div>
                 </li>
             <?php else: ?>
-                <li><a href="create_login.php">Se connecter</a></li>
+                <li><a href="create_login.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se connecter' : 'Log in' ?></a></li>
             <?php endif; ?>
         </ul>
     </nav>
 </header>
 
 <main>
-    <h1>Bienvenue sur Re7</h1>
     <section>
-        <h2>Nos recettes</h2>
         <div class="recipes" id="recipes-container">
             <?php foreach ($recipes as $recipe): ?>
                 <?php 
-                    $recipeNameFR = htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu');
-                    $isLiked = $isConnected && in_array($recipeNameFR, $userLikes ?? []);
+                    $recipeName = $_SESSION['lang'] == 'fr' ? htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu') : htmlspecialchars($recipe['name'] ?? 'Unknown name');
+                    $isLiked = $isConnected && in_array($recipeName, $userLikes ?? []);
                     $likeCount = isset($recipe['likers']) ? count($recipe['likers']) : 0;
-
-                    // Affichage des ingrédients
-                    $ingredientsHTML = '';
-                    if (isset($recipe['ingredients'])) {
-                        if (is_array($recipe['ingredients'])) {
-                            $items = [];
-                            foreach ($recipe['ingredients'] as $ing) {
-                                if (is_array($ing) && isset($ing['name'])) {
-                                    $desc = htmlspecialchars($ing['quantity'] ?? '') . ' ' . htmlspecialchars($ing['name']);
-                                    $desc = trim($desc);
-                                    $items[] = $desc;
-                                } elseif (is_string($ing)) {
-                                    $items[] = htmlspecialchars($ing);
-                                }
-                            }
-                            $ingredientsHTML = implode('<br>', $items);
-                        } else {
-                            $ingredientsHTML = nl2br(htmlspecialchars($recipe['ingredients']));
-                        }
-                    }
-
-                    $instructions = isset($recipe['instructions'])
-                        ? (is_array($recipe['instructions'])
-                            ? implode('<br>', array_map('htmlspecialchars', $recipe['instructions']))
-                            : nl2br(htmlspecialchars($recipe['instructions'])))
-                        : '';
                 ?>
                 <div class="recipe-card">
                     <?php if (!empty($recipe['imageURL'])): ?>
-                        <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= $recipeNameFR ?>">
+                        <img src="<?= htmlspecialchars($recipe['imageURL']) ?>" alt="<?= $recipeName ?>">
                     <?php else: ?>
-                        <div class="no-image">Image non disponible</div>
+                        <div class="no-image"><?= ($_SESSION['lang'] == 'fr') ? 'Image non disponible' : 'Image not available' ?></div>
                     <?php endif; ?>
-                    <h3><?= $recipeNameFR ?></h3>
-                    <p><strong>Auteur :</strong> <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
-                    <p><strong>Ingrédients :</strong><br><?= $ingredientsHTML ?></p>
-                    <p><strong>Instructions :</strong><br><?= $instructions ?></p>
+                    <h3><?= $recipeName ?></h3>
+                    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Auteur :' : 'Author :' ?></strong> <?= htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') ?></p>
                     <button class="like-btn" 
-                            data-recipe="<?= $recipeNameFR ?>"
+                            data-recipe="<?= $recipeName ?>"
                             data-liked="<?= $isLiked ? 'true' : 'false' ?>"
                             data-count="<?= $likeCount ?>">
                         <?= $isLiked ? '❤' : '♡' ?> <?= $likeCount ?>
                     </button>
-                    <a href="details.php?id=<?= urlencode($recipeNameFR) ?>" class="more-btn">+ Plus</a>
+                    <a href="details.php?id=<?= urlencode($recipeName) ?>" class="more-btn">
+                        <?php 
+                            echo ($_SESSION['lang'] == 'fr') ? "+ Plus" : "+ More";
+                        ?>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>

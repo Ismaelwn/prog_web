@@ -1,5 +1,16 @@
 <?php
 session_start();
+
+// Vérifier si une langue a été sélectionnée
+if (isset($_POST['lang'])) {
+    $_SESSION['lang'] = $_POST['lang'];  // Enregistrer la langue choisie dans la session
+} else {
+    // Si la langue n'est pas définie, utiliser la langue par défaut
+    if (!isset($_SESSION['lang'])) {
+        $_SESSION['lang'] = 'fr';  // Langue par défaut : français
+    }
+}
+
 $isConnected = isset($_SESSION["username"]);
 $currentUser = $isConnected ? $_SESSION["username"] : '';
 
@@ -25,47 +36,53 @@ $userLikes = $currentUserData['likes'] ?? [];
 $userPosts = $currentUserData['posts'] ?? [];
 
 function renderRecipeCard($recipe) {
-    $nameFR = htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu');
-    $image = !empty($recipe['imageURL']) ? '<img src="' . htmlspecialchars($recipe['imageURL']) . '" alt="' . $nameFR . '">' : '<div class="no-image">Image non disponible</div>';
+    $name = $_SESSION['lang'] == 'fr' ? htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu') : htmlspecialchars($recipe['name'] ?? 'Unknown name');
+    $image = !empty($recipe['imageURL']) ? '<img src="' . htmlspecialchars($recipe['imageURL']) . '" alt="' . $name . '">' : '<div class="no-image">Image non disponible</div>';
     echo "<div class='recipe-card'>
             $image
-            <h3>$nameFR</h3>
-            <p><strong>Auteur :</strong> " . htmlspecialchars($recipe['Author'] ?? 'Auteur inconnu') . "</p>
-            <a href='details.php?id=" . urlencode($nameFR) . "' class='more-btn'>+ Plus</a>
+            <h3>$name</h3>
+            <p><strong>" . ($_SESSION['lang'] == 'fr' ? 'Auteur' : 'Author') . " :</strong> " . htmlspecialchars($recipe['Author'] ?? ($_SESSION['lang'] == 'fr' ? 'Auteur inconnu' : 'Unknown author')) . "</p>
+            <a href='details.php?id=" . urlencode($name) . "' class='more-btn'>+ " . ($_SESSION['lang'] == 'fr' ? 'Plus' : 'More') . "</a>
           </div>";
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $_SESSION['lang'] == 'fr' ? 'fr' : 'en' ?>">
 <head>
     <meta charset="UTF-8">
-    <title>Mon profil - Re7</title>
+    <title><?= ($_SESSION['lang'] == 'fr' ? 'Mon profil' : 'My Profile') ?> - Re7</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="main.php">Accueil</a></li>
-            <li><a href="account.php">Mon compte</a></li>
-            <li><a href="logout.php">Se déconnecter</a></li>
+            <li><a href="main.php"><?= ($_SESSION['lang'] == 'fr' ? 'Accueil' : 'Home') ?></a></li>
+            <li><a href="account.php"><?= ($_SESSION['lang'] == 'fr' ? 'Mon compte' : 'My Account') ?></a></li>
+            <form method="POST" >
+                <select name="lang" onchange="this.form.submit()">
+                    <option value="fr" <?= $_SESSION['lang'] == 'fr' ? 'selected' : '' ?>>Français</option>
+                    <option value="en" <?= $_SESSION['lang'] == 'en' ? 'selected' : '' ?>>English</option>
+                </select>
+            </form>
+            <li><a href="logout.php"><?= ($_SESSION['lang'] == 'fr' ? 'Se déconnecter' : 'Log out') ?></a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <h1>Mon profil</h1>
+    <h1><?= ($_SESSION['lang'] == 'fr' ? 'Mon profil' : 'My Profile') ?></h1>
 
     <?php if (in_array('cuisinier', $currentRoles)): ?>
-        <h2>Recettes likées</h2>
+        <h2><?= ($_SESSION['lang'] == 'fr' ? 'Recettes likées' : 'Liked Recipes') ?></h2>
         <div class="recipes">
             <?php foreach ($recipes as $recipe): ?>
                 <?php if (in_array($recipe['nameFR'], $userLikes)) renderRecipeCard($recipe); ?>
             <?php endforeach; ?>
         </div>
 
-        <h2>Recettes commentées</h2>
+        <h2><?= ($_SESSION['lang'] == 'fr' ? 'Recettes commentées' : 'Commented Recipes') ?></h2>
         <div class="recipes">
             <?php 
             $commentedRecipeNames = [];
@@ -82,8 +99,8 @@ function renderRecipeCard($recipe) {
                 if (in_array($recipe['nameFR'], $commentedRecipeNames)) {
                     echo "<div class='recipe-card'>";
                     echo "<h3>" . htmlspecialchars($recipe['nameFR']) . "</h3>";
-                    echo "<a href='details.php?id=" . urlencode($recipe['nameFR']) . "' class='more-btn'>+ Plus</a>";
-                    echo "<p><strong>Vos commentaires :</strong></p>";
+                    echo "<a href='details.php?id=" . urlencode($recipe['nameFR']) . "' class='more-btn'>+ " . ($_SESSION['lang'] == 'fr' ? 'Plus' : 'More') . "</a>";
+                    echo "<p><strong>" . ($_SESSION['lang'] == 'fr' ? 'Vos commentaires' : 'Your comments') . " :</strong></p>";
                     foreach ($userCommentsByRecipe[$recipe['nameFR']] as $com) {
                         $date = date('d/m/Y à H:i', $com['timestamp']);
                         $text = htmlspecialchars($com['text']);
@@ -96,7 +113,7 @@ function renderRecipeCard($recipe) {
         </div>
 
     <?php elseif (in_array('chef', $currentRoles)): ?>
-        <h2>Recettes créées</h2>
+        <h2><?= ($_SESSION['lang'] == 'fr' ? 'Recettes créées' : 'Created Recipes') ?></h2>
         <div class="recipes">
             <?php foreach ($recipes as $recipe): ?>
                 <?php if ($recipe['Author'] === $currentUser) renderRecipeCard($recipe); ?>

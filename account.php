@@ -1,6 +1,16 @@
 <?php
 session_start();
 
+// Vérifier si une langue a été sélectionnée
+if (isset($_POST['lang'])) {
+    $_SESSION['lang'] = $_POST['lang'];  // Enregistrer la langue choisie dans la session
+} else {
+    // Si la langue n'est pas définie, utiliser la langue par défaut
+    if (!isset($_SESSION['lang'])) {
+        $_SESSION['lang'] = 'fr';  // Langue par défaut : français
+    }
+}
+
 if (!isset($_SESSION["username"])) {
     header("Location: main.php");
     exit;
@@ -33,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["new_email"])) {
     if (filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
         $currentUser["email"] = $newEmail;
         file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
-        $success = "Adresse email mise à jour.";
+        $success = ($_SESSION['lang'] == 'fr') ? "Adresse email mise à jour." : "Email address updated.";
     } else {
-        $error = "Adresse email invalide.";
+        $error = ($_SESSION['lang'] == 'fr') ? "Adresse email invalide." : "Invalid email address.";
     }
 }
 
@@ -63,47 +73,47 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["role_request"])) {
                 "timestamp" => time()
             ];
             file_put_contents($requestsFile, json_encode($requests, JSON_PRETTY_PRINT));
-            $success = "Demande pour le rôle \"$requestedRole\" envoyée.";
+            $success = ($_SESSION['lang'] == 'fr') ? "Demande pour le rôle \"$requestedRole\" envoyée." : "Request for the \"$requestedRole\" role sent.";
         } else {
-            $error = "Vous avez déjà fait une demande pour ce rôle.";
+            $error = ($_SESSION['lang'] == 'fr') ? "Vous avez déjà fait une demande pour ce rôle." : "You have already requested this role.";
         }
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $_SESSION['lang'] == 'fr' ? 'fr' : 'en' ?>">
 <head>
     <meta charset="UTF-8">
-    <title>Mon compte</title>
+    <title><?= ($_SESSION['lang'] == 'fr') ? 'Mon compte' : 'My Account' ?> - Re7</title>
 </head>
 <body>
-    <h1>Mon compte</h1>
+    <h1><?= ($_SESSION['lang'] == 'fr') ? 'Mon compte' : 'My Account' ?></h1>
 
     <?php if ($success): ?><p style="color:green"><?= htmlspecialchars($success) ?></p><?php endif; ?>
     <?php if ($error): ?><p style="color:red"><?= htmlspecialchars($error) ?></p><?php endif; ?>
 
-    <p><strong>Nom d'utilisateur :</strong> <?= htmlspecialchars($username) ?></p>
-    <p><strong>Prénom :</strong> <?= htmlspecialchars($currentUser["prenom"] ?? "Non renseigné") ?></p>
-    <p><strong>Nom :</strong> <?= htmlspecialchars($currentUser["nom"] ?? "Non renseigné") ?></p>
-    <p><strong>Email :</strong> <?= htmlspecialchars($currentUser["email"] ?? "Non renseigné") ?></p>
-    <p><strong>Statut :</strong> <?= htmlspecialchars(implode(', ', $currentUser["role"] ?? ["Non défini"])) ?></p>
+    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Nom d\'utilisateur :' : 'Username :' ?></strong> <?= htmlspecialchars($username) ?></p>
+    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Prénom :' : 'First Name :' ?></strong> <?= htmlspecialchars($currentUser["prenom"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
+    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Nom :' : 'Last Name :' ?></strong> <?= htmlspecialchars($currentUser["nom"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
+    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Email :' : 'Email :' ?></strong> <?= htmlspecialchars($currentUser["email"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
+    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Statut :' : 'Status :' ?></strong> <?= htmlspecialchars(implode(', ', $currentUser["role"] ?? [($_SESSION['lang'] == 'fr' ? "Non défini" : "Not defined")])) ?></p>
 
-    <h2>Modifier l'adresse email</h2>
+    <h2><?= ($_SESSION['lang'] == 'fr') ? 'Modifier l\'adresse email' : 'Change Email Address' ?></h2>
     <form method="post">
-        <input type="email" name="new_email" placeholder="Nouvel email" required>
-        <button type="submit">Mettre à jour</button>
+        <input type="email" name="new_email" placeholder="<?= ($_SESSION['lang'] == 'fr') ? 'Nouvel email' : 'New email' ?>" required>
+        <button type="submit"><?= ($_SESSION['lang'] == 'fr') ? 'Mettre à jour' : 'Update' ?></button>
     </form>
 
-    <h2>Demander un nouveau rôle</h2>
+    <h2><?= ($_SESSION['lang'] == 'fr') ? 'Demander un nouveau rôle' : 'Request a New Role' ?></h2>
     <form method="post">
         <select name="role_request">
-            <option value="chef">Chef</option>
-            <option value="traducteur">Traducteur</option>
+            <option value="chef"><?= ($_SESSION['lang'] == 'fr') ? 'Chef' : 'Chef' ?></option>
+            <option value="traducteur"><?= ($_SESSION['lang'] == 'fr') ? 'Traducteur' : 'Translator' ?></option>
         </select>
-        <button type="submit">Faire une demande</button>
+        <button type="submit"><?= ($_SESSION['lang'] == 'fr') ? 'Faire une demande' : 'Make a Request' ?></button>
     </form>
 
-    <br><a href="main.php">Retour à l'accueil</a>
+    <br><a href="main.php"><?= ($_SESSION['lang'] == 'fr') ? 'Retour à l\'accueil' : 'Back to Home' ?></a>
 </body>
 </html>
