@@ -65,9 +65,18 @@ if (!$recipes) {
             </form>
 
             <?php if ($isConnected): ?>
+                <!-- Ajouter le lien "Ajouter une recette" si l'utilisateur est un chef -->
                 <?php if (in_array('chef', $currentRoles)): ?>
+                    <li><a href="ajouter_recettes.php"><?= ($_SESSION['lang'] == 'fr') ? 'Ajouter une recette' : 'Add a Recipe' ?></a></li>
+                <?php endif; ?>
+
+                <!-- Lien "Valider des recettes" seulement pour les administrateurs -->
+                <?php if (in_array('admin', $currentRoles)): ?>
                     <li><a href="valider_recettes.php"><?= ($_SESSION['lang'] == 'fr') ? 'Valider des recettes' : 'Validate Recipes' ?></a></li>
-                <?php elseif (in_array('askchef', $currentRoles)): ?>
+                <?php endif; ?>
+
+                <!-- Autres liens pour les rôles -->
+                <?php if (in_array('askchef', $currentRoles)): ?>
                     <li><span><?= ($_SESSION['lang'] == 'fr') ? 'Demande de rôle chef en attente' : 'Chef role request pending' ?></span></li>
                 <?php endif; ?>
                 <?php if (in_array('traducteur', $currentRoles)): ?>
@@ -82,10 +91,10 @@ if (!$recipes) {
                 <li class="user-menu">
                     <span class="username"><?= htmlspecialchars($_SESSION["username"]) ?> ▼</span>
                     <div class="dropdown-menu">
-                    <a href="account.php"><?= ($_SESSION['lang'] == 'fr') ? 'Votre compte' : 'Your Account' ?></a>
-                    <a href="profil.php"><?= ($_SESSION['lang'] == 'fr') ? 'Mon profil' : 'My Profile' ?></a>
-                    <a href="logout.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se déconnecter' : 'Log out' ?></a>
-                </div>
+                        <a href="account.php"><?= ($_SESSION['lang'] == 'fr') ? 'Votre compte' : 'Your Account' ?></a>
+                        <a href="profil.php"><?= ($_SESSION['lang'] == 'fr') ? 'Mon profil' : 'My Profile' ?></a>
+                        <a href="logout.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se déconnecter' : 'Log out' ?></a>
+                    </div>
                 </li>
             <?php else: ?>
                 <li><a href="create_login.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se connecter' : 'Log in' ?></a></li>

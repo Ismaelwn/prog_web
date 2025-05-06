@@ -48,7 +48,8 @@
         "mail": "isma91sn_@gmail.com",
         "role": [
             "cuisinier",
-            "askchef"
+            "askchef",
+            "chef"
         ],
         "posts": [],
         "likes": [],
@@ -81,10 +82,10 @@
         "username": "blabla",
         "password": "Blabla25@",
         "mail": "blabla@gmail.com",
-        "role": [
-            "cuisinier",
-            "askchef"
-        ],
+        "role": {
+            "0": "cuisinier",
+            "2": "chef"
+        },
         "posts": [],
         "likes": [],
         "recettes": []

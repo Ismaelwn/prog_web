@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imageURL = trim($_POST['imageURL']);
     $allergenes = array_filter(array_map('trim', explode(',', $_POST['allergenes'])));
 
+    // Vérification si la recette existe déjà
     $exists = false;
     foreach ($recipes as $r) {
         if (strtolower($r['nameFR']) === strtolower($nameFR)) {
@@ -37,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($exists) {
         $error = "Une recette avec ce nom existe déjà.";
     } elseif ($nameFR && $name && $ingredients && $steps) {
+        // Ajouter la recette avec un statut en attente
         $newRecipe = [
             "nameFR" => $nameFR,
             "name" => $name,
@@ -48,14 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "imageURL" => $imageURL,
             "allergenes" => $allergenes,
             "Author" => $_SESSION['username'],
-            "validated" => in_array("chef", $roles),
+            "validated" => false, // Statut en attente
             "likers" => [],
             "commentaire" => [],
         ];
 
         $recipes[] = $newRecipe;
         file_put_contents($recipesFile, json_encode($recipes, JSON_PRETTY_PRINT));
-        $success = "Recette ajoutée avec succès !";
+        $success = "Recette soumise avec succès. En attente de validation par un administrateur.";
     } else {
         $error = "Tous les champs obligatoires doivent être remplis.";
     }
@@ -66,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter une recette</title>
+    <title>Soumettre une recette</title>
 </head>
 <body>
     <h1>Soumettre une nouvelle recette</h1>
@@ -105,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="allergenes">Allergènes (séparés par des virgules) :</label><br>
         <input type="text" name="allergenes" placeholder="ex : gluten, œufs, lait"><br><br>
 
-        <button type="submit">Ajouter la recette</button>
+        <button type="submit">Soumettre la recette</button>
     </form>
 
     <br><a href="main.php">Retour à l'accueil</a>

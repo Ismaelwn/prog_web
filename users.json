@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "nom": "testfinale",
+            "prenom": "testfinale",
+            "username": "testfinale",
+            "mail": "testfinale@gmail.com",
+            "password": "$2y$12$ZE7BHUDCYk\/YqRgRt3vxpeMLj8.nOJ22GAGLaxTv\/GdxBCmDuR12i",
+            "role": "admin"
+        }
+    ]
+}

@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["role_request"])) {
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Nom d\'utilisateur :' : 'Username :' ?></strong> <?= htmlspecialchars($username) ?></p>
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Prénom :' : 'First Name :' ?></strong> <?= htmlspecialchars($currentUser["prenom"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Nom :' : 'Last Name :' ?></strong> <?= htmlspecialchars($currentUser["nom"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
-    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Email :' : 'Email :' ?></strong> <?= htmlspecialchars($currentUser["email"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
+    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Email :' : 'Email :' ?></strong> <?= htmlspecialchars($currentUser["mail"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Statut :' : 'Status :' ?></strong> <?= htmlspecialchars(implode(', ', $currentUser["role"] ?? [($_SESSION['lang'] == 'fr' ? "Non défini" : "Not defined")])) ?></p>
 
     <h2><?= ($_SESSION['lang'] == 'fr') ? 'Modifier l\'adresse email' : 'Change Email Address' ?></h2>
