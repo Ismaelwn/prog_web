@@ -5,7 +5,6 @@ session_start();
 if (isset($_POST['lang'])) {
     $_SESSION['lang'] = $_POST['lang'];  // Enregistrer la langue choisie dans la session
 } else {
-    // Si la langue n'est pas définie, utiliser la langue par défaut
     if (!isset($_SESSION['lang'])) {
         $_SESSION['lang'] = 'fr';  // Langue par défaut : français
     }
@@ -18,7 +17,6 @@ if (!isset($_SESSION["username"])) {
 
 $username = $_SESSION["username"];
 $usersFile = "json/users.json";
-$requestsFile = "json/request.json";
 
 $users = json_decode(file_get_contents($usersFile), true);
 $currentUser = null;
@@ -49,33 +47,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["new_email"])) {
     }
 }
 
-// Traitement de la demande de rôle
+// ✅ Traitement de la demande de rôle en l'ajoutant directement comme "ask<role>"
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["role_request"])) {
     $requestedRole = $_POST["role_request"];
     $validRoles = ["chef", "traducteur"];
 
     if (in_array($requestedRole, $validRoles)) {
-        $requests = file_exists($requestsFile) ? json_decode(file_get_contents($requestsFile), true) : [];
+        $askRole = 'ask' . $requestedRole;
 
-        // éviter les doublons
-        $alreadyRequested = false;
-        foreach ($requests as $req) {
-            if ($req["username"] === $username && $req["role"] === $requestedRole) {
-                $alreadyRequested = true;
-                break;
-            }
-        }
-
-        if (!$alreadyRequested) {
-            $requests[] = [
-                "username" => $username,
-                "role" => $requestedRole,
-                "timestamp" => time()
-            ];
-            file_put_contents($requestsFile, json_encode($requests, JSON_PRETTY_PRINT));
+        // Vérifier que ni le rôle final ni la demande n'existent déjà
+        if (!in_array($requestedRole, $currentUser['role']) && !in_array($askRole, $currentUser['role'])) {
+            $currentUser['role'][] = $askRole;
+            $currentUser['role'] = array_unique($currentUser['role']);
+            file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
             $success = ($_SESSION['lang'] == 'fr') ? "Demande pour le rôle \"$requestedRole\" envoyée." : "Request for the \"$requestedRole\" role sent.";
         } else {
-            $error = ($_SESSION['lang'] == 'fr') ? "Vous avez déjà fait une demande pour ce rôle." : "You have already requested this role.";
+            $error = ($_SESSION['lang'] == 'fr') ? "Vous avez déjà ce rôle ou une demande est déjà en cours." : "You already have this role or have already requested it.";
         }
     }
 }
@@ -96,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["role_request"])) {
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Nom d\'utilisateur :' : 'Username :' ?></strong> <?= htmlspecialchars($username) ?></p>
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Prénom :' : 'First Name :' ?></strong> <?= htmlspecialchars($currentUser["prenom"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Nom :' : 'Last Name :' ?></strong> <?= htmlspecialchars($currentUser["nom"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
-    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Email :' : 'Email :' ?></strong> <?= htmlspecialchars($currentUser["mail"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
+    <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Email :' : 'Email :' ?></strong> <?= htmlspecialchars($currentUser["email"] ?? ($_SESSION['lang'] == 'fr' ? "Non renseigné" : "Not provided")) ?></p>
     <p><strong><?= ($_SESSION['lang'] == 'fr') ? 'Statut :' : 'Status :' ?></strong> <?= htmlspecialchars(implode(', ', $currentUser["role"] ?? [($_SESSION['lang'] == 'fr' ? "Non défini" : "Not defined")])) ?></p>
 
     <h2><?= ($_SESSION['lang'] == 'fr') ? 'Modifier l\'adresse email' : 'Change Email Address' ?></h2>

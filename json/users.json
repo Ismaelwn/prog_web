@@ -30,10 +30,11 @@
         "username": "moh_",
         "password": "m",
         "mail": "isma91sn@gmail.com",
-        "role": [
-            "cuisinier",
-            "admin"
-        ],
+        "role": {
+            "0": "cuisinier",
+            "1": "admin",
+            "3": "traducteur"
+        },
         "posts": [],
         "likes": [
             "Roti \u00e0 la cocotte"
@@ -84,7 +85,8 @@
         "mail": "blabla@gmail.com",
         "role": {
             "0": "cuisinier",
-            "2": "chef"
+            "2": "chef",
+            "4": "traducteur"
         },
         "posts": [],
         "likes": [],
