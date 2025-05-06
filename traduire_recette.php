@@ -9,7 +9,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['role'])) {
 $username = $_SESSION['username'];
 $roles = (array)$_SESSION['role'];
 
-if (!in_array('traducteur', $roles) && !in_array('admin', $roles)) {
+if (!in_array('traducteur', $roles) && !in_array('admin', $roles) && !in_array('chef', $roles)) {
     header("Location: main.php");
     exit;
 }
@@ -23,16 +23,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nameEN'])) {
         $recipes[$recipeIndex]['nameEN'] = $_POST['nameEN'];
     }
+    if (isset($_POST['nameFR'])) {
+        $recipes[$recipeIndex]['nameFR'] = $_POST['nameFR'];
+    }
 
     if (isset($_POST['ingredientsEN'])) {
         $recipes[$recipeIndex]['ingredientsEN'] = $_POST['ingredientsEN'];
+    }
+    if (isset($_POST['ingredientsFR'])) {
+        foreach ($_POST['ingredientsFR'] as $i => $val) {
+            $recipes[$recipeIndex]['ingredientsFR'][$i]['name'] = $val;
+        }
     }
 
     if (isset($_POST['stepsEN'])) {
         $recipes[$recipeIndex]['stepsEN'] = $_POST['stepsEN'];
     }
+    if (isset($_POST['stepsFR'])) {
+        $recipes[$recipeIndex]['stepsFR'] = $_POST['stepsFR'];
+    }
 
-    file_put_contents($recipesFile, json_encode($recipes, JSON_PRETTY_PRINT));
+    file_put_contents($recipesFile, json_encode($recipes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     $_SESSION['translation_success'] = true;
     header("Location: traduire_recette.php");
     exit;
@@ -62,8 +73,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>Aucune recette disponible.</p>
     <?php else: ?>
         <?php foreach ($recipes as $index => $recipe): ?>
+            <?php
+                $isAuthor = ($username === $recipe['Author']);
+                $canEditAll = in_array('admin', $roles) || (in_array('chef', $roles) && $isAuthor);
+
+                $ingredientsEN = $recipe['ingredientsEN'] ?? array_fill(0, count($recipe['ingredientsFR']), '');
+                if (count($ingredientsEN) !== count($recipe['ingredientsFR'])) {
+                    $ingredientsEN = array_pad($ingredientsEN, count($recipe['ingredientsFR']), '');
+                }
+
+                $stepsEN = $recipe['stepsEN'] ?? array_fill(0, count($recipe['stepsFR']), '');
+                if (count($stepsEN) !== count($recipe['stepsFR'])) {
+                    $stepsEN = array_pad($stepsEN, count($recipe['stepsFR']), '');
+                }
+            ?>
             <form method="post">
-                <h2>Recette : <?= htmlspecialchars($recipe['nameFR']) ?></h2>
+                <h2>Recette : <?= htmlspecialchars($recipe['nameFR']) ?> (Auteur: <?= htmlspecialchars($recipe['Author']) ?>)</h2>
                 <input type="hidden" name="recipeIndex" value="<?= $index ?>">
 
                 <table>
@@ -72,10 +97,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <th>Anglais</th>
                     </tr>
                     <tr>
-                        <td>Nom : <?= htmlspecialchars($recipe['nameFR']) ?></td>
                         <td>
-                            <?php if (empty($recipe['nameEN'])): ?>
-                                <input type="text" name="nameEN" value="">
+                            <?php
+                                $canEditNameFR = $canEditAll || (
+                                    (in_array('traducteur', $roles) || in_array('chef', $roles)) &&
+                                    empty($recipe['nameFR']) && !empty($recipe['nameEN'])
+                                );
+                            ?>
+                            Nom :
+                            <?php if ($canEditNameFR): ?>
+                                <input type="text" name="nameFR" value="<?= htmlspecialchars($recipe['nameFR'] ?? '') ?>">
+                            <?php else: ?>
+                                <?= htmlspecialchars($recipe['nameFR']) ?>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php
+                                $canEditNameEN = $canEditAll || (
+                                    (in_array('traducteur', $roles) || in_array('chef', $roles)) &&
+                                    empty($recipe['nameEN']) && !empty($recipe['nameFR'])
+                                );
+                            ?>
+                            Nom :
+                            <?php if ($canEditNameEN): ?>
+                                <input type="text" name="nameEN" value="<?= htmlspecialchars($recipe['nameEN'] ?? '') ?>">
                             <?php else: ?>
                                 <?= htmlspecialchars($recipe['nameEN']) ?>
                             <?php endif; ?>
@@ -86,27 +131,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>
                             Ingrédients :
                             <ul>
-                                <?php foreach ($recipe['ingredientsFR'] as $ing): ?>
-                                    <li><?= htmlspecialchars($ing['quantity']) ?> <?= htmlspecialchars($ing['name']) ?> (<?= htmlspecialchars($ing['type']) ?>)</li>
-
+                                <?php foreach ($recipe['ingredientsFR'] as $i => $ing): ?>
+                                    <?php
+                                        $canEditIngredientFR = $canEditAll || (
+                                            (in_array('traducteur', $roles) || in_array('chef', $roles)) &&
+                                            empty($ing['name']) && !empty($ingredientsEN[$i])
+                                        );
+                                    ?>
+                                    <li>
+                                        <?= htmlspecialchars($ing['quantity']) ?>
+                                        <?php if ($canEditIngredientFR): ?>
+                                            <input type="text" name="ingredientsFR[<?= $i ?>]" value="<?= htmlspecialchars($ing['name'] ?? '') ?>">
+                                        <?php else: ?>
+                                            <?= htmlspecialchars($ing['name']) ?>
+                                        <?php endif; ?>
+                                        (<?= htmlspecialchars($ing['type']) ?>)
+                                    </li>
                                 <?php endforeach; ?>
                             </ul>
                         </td>
                         <td>
-                            <?php
-                            $ingredientsEN = $recipe['ingredientsEN'] ?? array_fill(0, count($recipe['ingredientsFR']), '');
-                            if (count($ingredientsEN) !== count($recipe['ingredientsFR'])) {
-                                $ingredientsEN = array_pad($ingredientsEN, count($recipe['ingredientsFR']), '');
-                            }
-                            ?>
                             <ul>
                                 <?php foreach ($ingredientsEN as $i => $ingEN): ?>
+                                    <?php
+                                        $canEditIngredientEN = $canEditAll || (
+                                            (in_array('traducteur', $roles) || in_array('chef', $roles)) &&
+                                            empty($ingEN) && !empty($recipe['ingredientsFR'][$i]['name'])
+                                        );
+                                    ?>
                                     <li>
-                                        <?php if (empty($ingEN)): ?>
-                                            <input type="text" name="ingredientsEN[<?= $i ?>]" value="">
+                                        <?= htmlspecialchars($recipe['ingredientsFR'][$i]['quantity']) ?>
+                                        <?php if ($canEditIngredientEN): ?>
+                                            <input type="text" name="ingredientsEN[<?= $i ?>]" value="<?= htmlspecialchars($ingEN) ?>">
                                         <?php else: ?>
                                             <?= htmlspecialchars($ingEN) ?>
                                         <?php endif; ?>
+                                        (<?= htmlspecialchars($recipe['ingredientsFR'][$i]['type']) ?>)
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
@@ -117,23 +177,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>
                             Étapes :
                             <ol>
-                                <?php foreach ($recipe['stepsFR'] as $step): ?>
-                                    <li><?= htmlspecialchars($step) ?></li>
+                                <?php foreach ($recipe['stepsFR'] as $j => $stepFR): ?>
+                                    <?php
+                                        $canEditStepFR = $canEditAll || (
+                                            (in_array('traducteur', $roles) || in_array('chef', $roles)) &&
+                                            empty($stepFR) && !empty($stepsEN[$j])
+                                        );
+                                    ?>
+                                    <li>
+                                        <?php if ($canEditStepFR): ?>
+                                            <textarea name="stepsFR[<?= $j ?>]"><?= htmlspecialchars($stepFR) ?></textarea>
+                                        <?php else: ?>
+                                            <?= htmlspecialchars($stepFR) ?>
+                                        <?php endif; ?>
+                                    </li>
                                 <?php endforeach; ?>
                             </ol>
                         </td>
                         <td>
-                            <?php
-                            $stepsEN = $recipe['stepsEN'] ?? array_fill(0, count($recipe['stepsFR']), '');
-                            if (count($stepsEN) !== count($recipe['stepsFR'])) {
-                                $stepsEN = array_pad($stepsEN, count($recipe['stepsFR']), '');
-                            }
-                            ?>
                             <ol>
                                 <?php foreach ($stepsEN as $j => $stepEN): ?>
+                                    <?php
+                                        $canEditStepEN = $canEditAll || (
+                                            (in_array('traducteur', $roles) || in_array('chef', $roles)) &&
+                                            empty($stepEN) && !empty($recipe['stepsFR'][$j])
+                                        );
+                                    ?>
                                     <li>
-                                        <?php if (empty($stepEN)): ?>
-                                            <textarea name="stepsEN[<?= $j ?>]"></textarea>
+                                        <?php if ($canEditStepEN): ?>
+                                            <textarea name="stepsEN[<?= $j ?>]"><?= htmlspecialchars($stepEN) ?></textarea>
                                         <?php else: ?>
                                             <?= htmlspecialchars($stepEN) ?>
                                         <?php endif; ?>
@@ -144,11 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </tr>
                 </table>
 
-                <?php if (empty($recipe['nameEN']) || array_filter($ingredientsEN, fn($v) => empty($v)) || array_filter($stepsEN, fn($v) => empty($v))): ?>
-                    <button type="submit">Enregistrer les traductions</button>
-                <?php else: ?>
-                    <p>Toutes les traductions sont complètes pour cette recette.</p>
-                <?php endif; ?>
+                <button type="submit">Enregistrer les traductions</button>
             </form>
             <hr>
         <?php endforeach; ?>

@@ -18,8 +18,28 @@ $recipes = file_exists($recipesFile) ? json_decode(file_get_contents($recipesFil
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nameFR = trim($_POST['nameFR']);
     $name = trim($_POST['name']);
-    $ingredientsFR = array_filter(array_map('trim', explode("\n", $_POST['ingredientsFR'])));
-    $ingredients = array_filter(array_map('trim', explode("\n", $_POST['ingredients'])));
+
+    // Conversion en tableaux d'objets
+    $ingredientsFR = [];
+    foreach (array_filter(array_map('trim', explode("\n", $_POST['ingredientsFR']))) as $line) {
+        $parts = array_map('trim', explode("|", $line));
+        $ingredientsFR[] = [
+            "quantity" => $parts[0] ?? "",
+            "name" => $parts[1] ?? "",
+            "type" => $parts[2] ?? ""
+        ];
+    }
+
+    $ingredients = [];
+    foreach (array_filter(array_map('trim', explode("\n", $_POST['ingredients']))) as $line) {
+        $parts = array_map('trim', explode("|", $line));
+        $ingredients[] = [
+            "quantity" => $parts[0] ?? "",
+            "name" => $parts[1] ?? "",
+            "type" => $parts[2] ?? ""
+        ];
+    }
+
     $stepsFR = array_filter(array_map('trim', explode("\n", $_POST['stepsFR'])));
     $steps = array_filter(array_map('trim', explode("\n", $_POST['steps'])));
     $timers = array_map('trim', explode(",", $_POST['timers']));
@@ -38,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($exists) {
         $error = "Une recette avec ce nom existe déjà.";
     } elseif ($nameFR && $name && $ingredients && $steps) {
-        // Ajouter la recette avec un statut en attente
         $newRecipe = [
             "nameFR" => $nameFR,
             "name" => $name,
@@ -50,13 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "imageURL" => $imageURL,
             "allergenes" => $allergenes,
             "Author" => $_SESSION['username'],
-            "validated" => false, // Statut en attente
+            "validated" => false,
             "likers" => [],
             "commentaire" => [],
         ];
 
         $recipes[] = $newRecipe;
-        file_put_contents($recipesFile, json_encode($recipes, JSON_PRETTY_PRINT));
+        file_put_contents($recipesFile, json_encode($recipes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         $success = "Recette soumise avec succès. En attente de validation par un administrateur.";
     } else {
         $error = "Tous les champs obligatoires doivent être remplis.";
