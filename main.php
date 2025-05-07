@@ -30,6 +30,33 @@ $recipes = json_decode(file_get_contents('json/recipes.json'), true);
 if (!$recipes) {
     die("Erreur lors du chargement des recettes.");
 }
+
+// Appliquer les filtres
+$filteredRecipes = $recipes;
+
+if (isset($_GET['gluten-free']) && $_GET['gluten-free'] == 'on') {
+    $filteredRecipes = array_filter($filteredRecipes, function ($recipe) {
+        return !in_array("NoGluten", $recipe['Without']);
+    });
+}
+
+if (isset($_GET['milk-free']) && $_GET['milk-free'] == 'on') {
+    $filteredRecipes = array_filter($filteredRecipes, function ($recipe) {
+        return !in_array("NoMilk", $recipe['Without']);
+    });
+}
+
+if (isset($_GET['vegan']) && $_GET['vegan'] == 'on') {
+    $filteredRecipes = array_filter($filteredRecipes, function ($recipe) {
+        return !in_array("Vegan", $recipe['Without']);
+    });
+}
+
+if (isset($_GET['vegetarian']) && $_GET['vegetarian'] == 'on') {
+    $filteredRecipes = array_filter($filteredRecipes, function ($recipe) {
+        return !in_array("Vegetarian", $recipe['Without']);
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -74,30 +101,6 @@ if (!$recipes) {
                 <?php if (in_array('admin', $currentRoles)): ?>
                     <li><a href="valider_recettes.php"><?= ($_SESSION['lang'] == 'fr') ? 'Valider des recettes' : 'Validate Recipes' ?></a></li>
                 <?php endif; ?>
-
-                <!-- Autres liens pour les rôles -->
-                <?php if (in_array('askchef', $currentRoles)): ?>
-                    <li><span><?= ($_SESSION['lang'] == 'fr') ? 'Demande de rôle chef en attente' : 'Chef role request pending' ?></span></li>
-                <?php endif; ?>
-                <?php if (in_array('traducteur', $currentRoles)): ?>
-                    <li><a href="traduire_recette.php"><?= ($_SESSION['lang'] == 'fr') ? 'Traduire une recette' : 'Translate a Recipe' ?></a></li>
-                <?php elseif (in_array('asktraducteur', $currentRoles)): ?>
-                    <li><span><?= ($_SESSION['lang'] == 'fr') ? 'Demande de rôle traducteur en attente' : 'Translator role request pending' ?></span></li>
-                <?php endif; ?>
-                <?php if (in_array('admin', $currentRoles)): ?>
-                    <li><a href="admin_panel.php"><?= ($_SESSION['lang'] == 'fr') ? 'Administration' : 'Admin Panel' ?></a></li>
-                <?php endif; ?>
-
-                <li class="user-menu">
-                    <span class="username"><?= htmlspecialchars($_SESSION["username"]) ?> ▼</span>
-                    <div class="dropdown-menu">
-                        <a href="account.php"><?= ($_SESSION['lang'] == 'fr') ? 'Votre compte' : 'Your Account' ?></a>
-                        <a href="profil.php"><?= ($_SESSION['lang'] == 'fr') ? 'Mon profil' : 'My Profile' ?></a>
-                        <a href="logout.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se déconnecter' : 'Log out' ?></a>
-                    </div>
-                </li>
-            <?php else: ?>
-                <li><a href="create_login.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se connecter' : 'Log in' ?></a></li>
             <?php endif; ?>
         </ul>
     </nav>
@@ -105,8 +108,28 @@ if (!$recipes) {
 
 <main>
     <section>
+        <h2><?= ($_SESSION['lang'] == 'fr') ? 'Filtres' : 'Filters' ?></h2>
+        <!-- Filtres dans le corps de la page -->
+        <form method="GET" action="main.php">
+            <label for="gluten-free"><?= ($_SESSION['lang'] == 'fr') ? 'Sans gluten' : 'Gluten-free' ?></label>
+            <input type="checkbox" name="gluten-free" id="gluten-free">
+            
+            <label for="milk-free"><?= ($_SESSION['lang'] == 'fr') ? 'Sans lait' : 'Milk-free' ?></label>
+            <input type="checkbox" name="milk-free" id="milk-free">
+            
+            <label for="vegan"><?= ($_SESSION['lang'] == 'fr') ? 'Vegan' : 'Vegan' ?></label>
+            <input type="checkbox" name="vegan" id="vegan">
+            
+            <label for="vegetarian"><?= ($_SESSION['lang'] == 'fr') ? 'Végétarien' : 'Vegetarian' ?></label>
+            <input type="checkbox" name="vegetarian" id="vegetarian">
+            
+            <button type="submit"><?= ($_SESSION['lang'] == 'fr') ? 'Appliquer les filtres' : 'Apply filters' ?></button>
+        </form>
+    </section>
+
+    <section>
         <div class="recipes" id="recipes-container">
-            <?php foreach ($recipes as $recipe): ?>
+            <?php foreach ($filteredRecipes as $recipe): ?>
                 <?php 
                     $recipeName = $_SESSION['lang'] == 'fr' ? htmlspecialchars($recipe['nameFR'] ?? 'Nom inconnu') : htmlspecialchars($recipe['name'] ?? 'Unknown name');
                     $isLiked = $isConnected && in_array($recipeName, $userLikes ?? []);
