@@ -52,7 +52,7 @@ function renderRecipeCard($recipe) {
 <head>
     <meta charset="UTF-8">
     <title><?= ($_SESSION['lang'] == 'fr' ? 'Mon profil' : 'My Profile') ?> - Re7</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style6.css">
     
 </head>
 <body>

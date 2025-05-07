@@ -88,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Soumettre une recette</title>
+    <link rel="stylesheet" href="css/style4.css">
 </head>
 <body>
     <h1>Soumettre une nouvelle recette</h1>

@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Panneau d'administration</title>
+    <link rel="stylesheet" href="css/style3.css">
 </head>
 <body>
     <h1>Gestion des utilisateurs</h1>
