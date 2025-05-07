@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['validate'])) {
 <head>
     <meta charset="UTF-8">
     <title>Valider des recettes</title>
+    <link rel="stylesheet" href="css/style7.css">
 </head>
 <body>
     <h1>Recettes à valider</h1>

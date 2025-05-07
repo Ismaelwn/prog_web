@@ -101,6 +101,30 @@ if (isset($_GET['vegetarian']) && $_GET['vegetarian'] == 'on') {
                 <?php if (in_array('admin', $currentRoles)): ?>
                     <li><a href="valider_recettes.php"><?= ($_SESSION['lang'] == 'fr') ? 'Valider des recettes' : 'Validate Recipes' ?></a></li>
                 <?php endif; ?>
+
+                <!-- Autres liens pour les rôles -->
+                <?php if (in_array('askchef', $currentRoles)): ?>
+                    <li><span><?= ($_SESSION['lang'] == 'fr') ? 'Demande de rôle chef en attente' : 'Chef role request pending' ?></span></li>
+                <?php endif; ?>
+                <?php if (in_array('traducteur', $currentRoles)): ?>
+                    <li><a href="traduire_recette.php"><?= ($_SESSION['lang'] == 'fr') ? 'Traduire une recette' : 'Translate a Recipe' ?></a></li>
+                <?php elseif (in_array('asktraducteur', $currentRoles)): ?>
+                    <li><span><?= ($_SESSION['lang'] == 'fr') ? 'Demande de rôle traducteur en attente' : 'Translator role request pending' ?></span></li>
+                <?php endif; ?>
+                <?php if (in_array('admin', $currentRoles)): ?>
+                    <li><a href="admin_panel.php"><?= ($_SESSION['lang'] == 'fr') ? 'Administration' : 'Admin Panel' ?></a></li>
+                <?php endif; ?>
+
+                <li class="user-menu">
+                    <span class="username"><?= htmlspecialchars($_SESSION["username"]) ?> ▼</span>
+                    <div class="dropdown-menu">
+                        <a href="account.php"><?= ($_SESSION['lang'] == 'fr') ? 'Votre compte' : 'Your Account' ?></a>
+                        <a href="profil.php"><?= ($_SESSION['lang'] == 'fr') ? 'Mon profil' : 'My Profile' ?></a>
+                        <a href="logout.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se déconnecter' : 'Log out' ?></a>
+                    </div>
+                </li>
+            <?php else: ?>
+                <li><a href="create_login.php"><?= ($_SESSION['lang'] == 'fr') ? 'Se connecter' : 'Log in' ?></a></li>
             <?php endif; ?>
         </ul>
     </nav>

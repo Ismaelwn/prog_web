@@ -155,5 +155,45 @@
         "posts": [],
         "likes": [],
         "recettes": []
+    },
+    {
+        "nom": "",
+        "prenom": "",
+        "username": "userTrad",
+        "password": "m",
+        "mail": "",
+        "role": [
+            "traducteur"
+        ],
+        "posts": [],
+        "likes": [],
+        "recettes": []
+    },
+    {
+        "nom": "",
+        "prenom": "",
+        "username": "userCuisinier",
+        "password": "m",
+        "mail": "",
+        "role": [
+            "cuisinier"
+        ],
+        "posts": [],
+        "likes": [],
+        "recettes": []
+    },
+    {
+        "nom": "",
+        "prenom": "",
+        "username": "userChef",
+        "password": "m",
+        "mail": "",
+        "role": [
+            "chef"
+        ],
+        "posts": [],
+        "likes": [],
+        "recettes": []
     }
+
 ]

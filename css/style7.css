@@ -1,0 +1,89 @@
+/* ===== VALIDATION PAGE MODERN STYLE ===== */
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: #333;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+p {
+    max-width: 600px;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+p.success {
+    color: green;
+    font-weight: bold;
+}
+
+p.error {
+    color: red;
+    font-weight: bold;
+}
+
+.recipe-card {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card form {
+    margin-top: 10px;
+}
+
+.recipe-card button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.recipe-card button:hover {
+    background: linear-gradient(90deg, #0056b3, #1a8cff);
+    transform: scale(1.05);
+}
+
+a {
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
