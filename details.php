@@ -98,6 +98,7 @@ if (isset($_POST['delete_comment'])) {
 <head>
     <meta charset="UTF-8">
     <title>Recette - <?= htmlspecialchars($recipe[$_SESSION['lang'] == 'fr' ? 'nameFR' : 'name']) ?></title>
+    <link rel="stylesheet" href="css/style7.css">
 </head>
 <body>
     <header>
